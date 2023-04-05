@@ -82,6 +82,38 @@
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "api_key",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8457d873-7c98-4ba1-9ca0-14290fe1a232",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Invalid input",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
@@ -103,9 +135,14 @@
           "uuid": "5b29cf9c-ceeb-47af-ade9-3798128d317d",
           "body": "{}",
           "latency": 0,
-          "statusCode": 200,
+          "statusCode": 405,
           "label": "",
-          "headers": [],
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
@@ -218,6 +255,100 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "c991a7f4-e51c-427a-a189-cfe2eba420cc",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "04fafb43-9039-4a89-af1e-cdb8dc3fcf26",
+          "body": "{\n  \"response\": \"Request successfully accepted. Use \\\\\\\"requestUID\\\\\\\" to track it's status.\",\n  \"requestUID\": \"{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a48ad7b4-e9dc-43d8-9023-86131c4f3e52",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "5d0ec5c7-4835-4712-a562-31be844ce144",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "145095f5-1591-48bb-9cdf-8518c860763a",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "677d1fb4-d44d-4825-aa25-a113abc5ccc3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -235,10 +366,6 @@
     },
     {
       "type": "route",
-      "uuid": "777d1380-3802-4a4a-8866-94ddd1d2cf68"
-    },
-    {
-      "type": "route",
       "uuid": "852b68e1-7b8d-4bb9-86a5-ea8eda3136ba"
     },
     {
@@ -248,6 +375,22 @@
     {
       "type": "route",
       "uuid": "3487c6aa-171e-4a66-964e-ef52105fbb5f"
+    },
+    {
+      "type": "route",
+      "uuid": "c991a7f4-e51c-427a-a189-cfe2eba420cc"
+    },
+    {
+      "type": "route",
+      "uuid": "777d1380-3802-4a4a-8866-94ddd1d2cf68"
+    },
+    {
+      "type": "route",
+      "uuid": "a48ad7b4-e9dc-43d8-9023-86131c4f3e52"
+    },
+    {
+      "type": "route",
+      "uuid": "145095f5-1591-48bb-9cdf-8518c860763a"
     }
   ],
   "proxyMode": false,

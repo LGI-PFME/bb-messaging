@@ -81,6 +81,44 @@ Then(
   () => specSendEmailSingle.response().to.have.headerContains('allow', 'POST')
 );
 
+// Scenario: User is unable to send an email due to missing required api_key in the request
+// Given and Then for this scenario are written in the aforementioned example
+When('User sends {string} request with required body', method =>
+  specSendEmailSingle
+    .withMethod(method)
+    .withPath(baseUrl)
+    .withHeaders('Accept', 'application/json')
+    .withBody(sendEmailSingleRequestBody)
+);
+
+When(
+  'The request is missing an api_key',
+  () => 'The request is missing an api_key'
+);
+
+// Scenario: User is unable to send an email due to missing required body in the request
+// Given and Then for this scenario are written in the aforementioned example
+When(
+  'User sends {string} request with given {string} as api_key',
+  (method, apiKey) =>
+    specSendEmailSingle
+      .withMethod(method)
+      .withPath(baseUrl)
+      .withHeaders('api_key', apiKey)
+      .withHeaders('Accept', 'application/json')
+);
+
+When('The request is missing a body', () => 'The request is missing a body');
+
+// Scenario: User is unable to send an email due to missing required api_key and body in the request
+// Given and Then for this scenario are written in the aforementioned example
+When('User sends {string} request without required body and api_key', method =>
+  specSendEmailSingle
+    .withMethod(method)
+    .withPath(baseUrl)
+    .withHeaders('Accept', 'application/json')
+);
+
 After(endpointTag, () => {
   specSendEmailSingle.end();
 });
