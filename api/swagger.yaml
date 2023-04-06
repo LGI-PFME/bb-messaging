@@ -1,0 +1,308 @@
+openapi: 3.0.1
+info:
+  version: 0.1.1
+  title: GovStack Messaging Building Block
+  description: 2Sending emails via GovStack Messaging Building Block
+  termsOfService: https://www.govstack.global/
+  contact:
+    email: messaging@govstack.global
+    url: https://solutions.dial.community/building_blocks/messaging
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+host: example.com
+basePath: /v1
+tags:
+- name: messaging
+  description: Sending single emails or in batch. To send emails with different priorities, appropriate endpoints are used without any changes in the resources.
+- name: callback
+  description: For custom callback services.
+- name: status
+  description: Get status of sent single or batch email(s).
+schemes:
+- https
+paths:
+  /send/email/single:
+    post:
+      tags:
+      - messaging
+      summary: Send a single email
+      operationId: sendSingleEmail
+      parameters:
+      - name: api_key
+        in: header
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: body
+        description: Email containing information about the recipient
+        required: true
+        schema:
+          $ref: "#/definitions/Email"
+      responses:
+        200:
+          description: Request successfully accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/responseRequestAccepted"
+        405:
+          description: Invalid input
+      security:
+      - api_key: []
+  /send/email/batch:
+    post:
+      tags:
+      - messaging
+      summary: Send batch emails
+      description: When sending batch emails, recipients information is passed in base64 format. Sender information and email content must be the same for all recipients.
+      operationId: sendBatchEmail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      parameters:
+      - name: api_key
+        in: header
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: body
+        description: Email containing information about the recipient
+        required: true
+        schema:
+          $ref: "#/definitions/batchEmail"
+      responses:
+        200:
+          description: Request successfully accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/responseRequestAccepted"
+        405:
+          description: Invalid input
+      security:
+      - api_key: []
+  /callback/email:
+    post:
+      tags:
+      - callback
+      summary: An optional custom service to provide an endpoint for client-specific functionality to accept replied emails, etc
+      description: This service may reside on both Messaging BB's and client's side. If used, a matching OpenAPI spec must be provided by the service provider, describing the expected input when making request to the endpoint.
+      operationId: callbackEmail
+      parameters:
+      - name: api_key
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: requestUID
+        in: header
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: body
+        description: Email containing information about the recipient
+        required: true
+        schema:
+          $ref: "#/definitions/callbackContent"
+      responses:
+        200:
+          description: Request successfully accepted
+        405:
+          description: Invalid input
+      security:
+      - api_key: []
+  /status/email:
+    get:
+      tags:
+      - status
+      summary: Get an overview of sent emails statuses
+      description: Get status of sent emails. Use both \"api_key\" and \"requestUID\" in your request.
+      operationId: getEmailStatus
+      parameters:
+      - name: api_key
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: requestUID
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: Select status values to fetch data for
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - scheduled
+            - processing
+            - deferred
+            - bounced
+            - not sent
+            - delivered
+      responses:
+        200:
+          description: Request successfully accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/requestStatus"
+        405:
+          description: Invalid input
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Email:
+    type: object
+    properties:
+      callback:
+        $ref: "#/definitions/callbackSender"
+      senderInfo:
+        $ref: "#/definitions/senderInfo"
+      recipientInfo:
+        $ref: "#/definitions/recipientInfo"
+      emailContent:
+        $ref: "#/definitions/emailContent"
+  batchEmail:
+    type: object
+    properties:
+      callbackURI:
+        $ref: "#/definitions/callbackSender"
+      senderInfo:
+        $ref: "#/definitions/senderInfo"
+      recipientInfo:
+        $ref: "#/definitions/batchRecipientInfo"
+      emailContent:
+        $ref: "#/definitions/emailContent"
+  callbackSender:
+    type: object
+    properties:
+      URI:
+        type: string
+        example: https://example.com/callback/emails/requestUID
+  senderInfo:
+    type: object
+    properties:
+      organisationName:
+        type: string
+        example: Example Medical Insitution
+      organisationRegNr:
+        type: string
+        example: GOV1234567890
+      onBehalfOfName:
+        type: string
+        example: Example Medical Insitution
+      onBehalfOfRegNr:
+        type: string
+        example: GOV1234567890
+      email:
+        type: string
+        example: sender@example.com
+      replyTo:
+        type: string
+        example: reply-to@example.com
+      name:
+        type: string
+        example: Example Doctor
+  recipientInfo:
+    type: object
+    properties:
+      email:
+        type: string
+        example: customer@example.com
+      emailCC:
+        type: string
+        example: customer-cc@example.com
+      emailBCC:
+        type: string
+        example: customer-bcc@example.com
+      name:
+        type: string
+        example: Example Customer
+  batchRecipientInfo:
+    type: object
+    properties:
+      batchEmailAsBase64:
+        type: string
+        format: base64
+        example: W3sKCSJyZWNpcGllbnRJbmZvIjogewoJCSJlbWFpbCI6ICJjdXN0b21lckBleGFtcGxlLmNvbSIsCgkJImVtYWlsQ0MiOiAiY3VzdG9tZXItY2NAZXhhbXBsZS5jb20iLAoJCSJlbWFpbEJDQyI6ICJjdXN0b21lci1iY2NAZXhhbXBsZS5jb20iLAoJCSJuYW1lIjogIkV4YW1wbGUgQ3VzdG9tZXIiCgl9Cn0sIHsKCSJyZWNpcGllbnRJbmZvIjogewoJCSJlbWFpbCI6ICJkZWFyLWN1c3RvbWVyQGV4YW1wbGUuY29tIiwKCQkibmFtZSI6ICJVbmtub3duIEN1c3RvbWVyIgoJfQp9XQ==
+  callbackContent:
+    type: object
+    properties:
+      meta:
+        type: string
+        example: Meta-info
+      content:
+        type: string
+        format: bae64
+        example: Q2xpZW50LXNwZWNpZmljIGNvbnRlbnQsIG1vc3QgbGlrZWx5IEpTT04=
+  emailContent:
+    type: object
+    properties:
+      encoding:
+        type: string
+        example: UTF-8
+      title:
+        type: string
+        example: Example Title Of An Email
+      content:
+        type: string
+        example: Example Customer
+  responseRequestAccepted:
+    type: object
+    properties:
+      response:
+        type: string
+        example: Request successfully accepted. Use \"requestUID\" to track it's status.
+      requestUID:
+        type: string
+        example: fUQK-CPju-Ea5B-6y7X-8A72-VqU5
+  requestStatus:
+    type: object
+    properties:
+      scheduled:
+        type: integer
+        format: int32
+        example: 0
+      processing:
+        type: integer
+        format: int32
+        example: 1004
+      deferred:
+        type: integer
+        format: int32
+        example: 0
+      bounced:
+        type: integer
+        format: int32
+        example: 257
+      not_sent:
+        type: integer
+        format: int32
+        example: 0
+      delivered:
+        type: integer
+        format: int32
+        example: 9032
+externalDocs:
+  description: Find out more about GovStack
+  url: https://www.govstack.global/
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/GovStack/govstack-messaging-bb/0.1.1
