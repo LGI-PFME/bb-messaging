@@ -1,7 +1,14 @@
+const jsonToBase64 = jsonObj => {
+  const jsonString = JSON.stringify(jsonObj);
+  return Buffer.from(jsonString).toString('base64');
+};
+
 module.exports = {
+  jsonToBase64,
   localhost: 'http://localhost:3333/',
   defaultResponseTime: 15000,
   sendSingleEmailEndpoint: 'send/email/single',
+  sendBatchEmailsEndpoint: 'send/email/batch',
   contentTypeHeader: {
     key: 'content-type',
     value: 'application/json; charset=utf-8',
@@ -38,4 +45,20 @@ module.exports = {
       content: 'Example Customer',
     },
   },
+  batchRecipientInfo: [
+    {
+      recipientInfo: {
+        email: 'customer@example.com',
+        emailCC: 'customer-cc@example.com',
+        emailBCC: 'customer-bcc@example.com',
+        name: 'Example Customer',
+      },
+    },
+    {
+      recipientInfo: {
+        email: 'dear-customer@example.com',
+        name: 'Unknown Customer',
+      },
+    },
+  ],
 };
