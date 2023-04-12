@@ -67,16 +67,48 @@
     {
       "uuid": "3abd79d9-8f58-4cb3-9c68-523fa60764bc",
       "type": "http",
-      "documentation": "",
-      "method": "get",
+      "documentation": "Send a single email",
+      "method": "post",
       "endpoint": "send/email/single",
       "responses": [
         {
           "uuid": "88a9f955-9277-4d1b-9cc0-bd8e5ad08e98",
-          "body": "{}",
+          "body": "{\n  \"response\": \"Request successfully accepted. Use \\\\\\\"requestUID\\\\\\\" to track it's status.\",\n  \"requestUID\": \"{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}\"\n}",
           "latency": 0,
           "statusCode": 200,
-          "label": "",
+          "label": "Request successfully accepted",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "api_key",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "8457d873-7c98-4ba1-9ca0-14290fe1a232",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Invalid input",
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
@@ -103,9 +135,207 @@
           "uuid": "5b29cf9c-ceeb-47af-ade9-3798128d317d",
           "body": "{}",
           "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "852b68e1-7b8d-4bb9-86a5-ea8eda3136ba",
+      "type": "http",
+      "documentation": "route added for testing to invoke 405 - Method Not Allowed status code",
+      "method": "put",
+      "endpoint": "send/email/single",
+      "responses": [
+        {
+          "uuid": "a8110bfc-2ab4-4786-bfc9-131c690ea18d",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "117ccfcd-79fd-4bad-a57b-ca8a5b447ff3",
+      "type": "http",
+      "documentation": "route added for testing to invoke 405 - Method Not Allowed status code",
+      "method": "delete",
+      "endpoint": "send/email/single",
+      "responses": [
+        {
+          "uuid": "567bef11-b88f-4cac-ae81-c998d8d00cb5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "3487c6aa-171e-4a66-964e-ef52105fbb5f",
+      "type": "http",
+      "documentation": "route added for testing to invoke 405 - Method Not Allowed status code",
+      "method": "get",
+      "endpoint": "send/email/single",
+      "responses": [
+        {
+          "uuid": "3f45e895-e7cd-480d-b007-e9ae65a6aad2",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "c991a7f4-e51c-427a-a189-cfe2eba420cc",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "04fafb43-9039-4a89-af1e-cdb8dc3fcf26",
+          "body": "{\n  \"response\": \"Request successfully accepted. Use \\\\\\\"requestUID\\\\\\\" to track it's status.\",\n  \"requestUID\": \"{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}-{{faker 'random.alphaNumeric' 4}}\"\n}",
+          "latency": 0,
           "statusCode": 200,
           "label": "",
           "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "a48ad7b4-e9dc-43d8-9023-86131c4f3e52",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "5d0ec5c7-4835-4712-a562-31be844ce144",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "145095f5-1591-48bb-9cdf-8518c860763a",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "send/email/batch",
+      "responses": [
+        {
+          "uuid": "677d1fb4-d44d-4825-aa25-a113abc5ccc3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "POST"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
@@ -136,7 +366,31 @@
     },
     {
       "type": "route",
+      "uuid": "852b68e1-7b8d-4bb9-86a5-ea8eda3136ba"
+    },
+    {
+      "type": "route",
+      "uuid": "117ccfcd-79fd-4bad-a57b-ca8a5b447ff3"
+    },
+    {
+      "type": "route",
+      "uuid": "3487c6aa-171e-4a66-964e-ef52105fbb5f"
+    },
+    {
+      "type": "route",
+      "uuid": "c991a7f4-e51c-427a-a189-cfe2eba420cc"
+    },
+    {
+      "type": "route",
       "uuid": "777d1380-3802-4a4a-8866-94ddd1d2cf68"
+    },
+    {
+      "type": "route",
+      "uuid": "a48ad7b4-e9dc-43d8-9023-86131c4f3e52"
+    },
+    {
+      "type": "route",
+      "uuid": "145095f5-1591-48bb-9cdf-8518c860763a"
     }
   ],
   "proxyMode": false,
