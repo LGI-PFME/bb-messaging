@@ -4,15 +4,11 @@ description: This section lists the technical capabilities of this Building Bloc
 
 # 6 Functional Requirements
 
-This section lists the technical capabilities of the Messaging Building Block.
-
-### 6.1 Messaging building block components
-
-The following components are needed to achieve the technical functionalities of the messaging Building Block.
+This section lists the technical capabilities of the Messaging Building Block. The following components are needed to achieve the technical functionalities of the messaging Building Block.
 
 <figure><img src=".gitbook/assets/image3 (1) (1).png" alt=""><figcaption><p><a href="https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK">https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK</a></p></figcaption></figure>
 
-### 6.1.1 Messaging request initiation
+### 6.1 Messaging request initiation
 
 Handles the initiation of input data processing from all the API messaging calls and makes the API access control verification from other Building Blocks to the Messaging Building Block and vice versa as well as within the Messaging Building Block, it will:
 
@@ -26,14 +22,14 @@ Handles the initiation of input data processing from all the API messaging calls
 
 &#x20;This request could come from two sources: external or internal. An external source could be another GovStack Building Block (e.g. the Registration Building Block). Either source must be appropriately authenticated and authorized to initiate the request. The request must contain at a minimum: the contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.
 
-### **6.1.2 Queuing**
+### **6.2 Queuing**
 
 The queuing process varies according to the policy and message type attached to the messaging, if an emergency messaging type applies to it, the messaging gets prioritized, otherwise, the FIFO algorithm (First In, First Out) applies to other message types. It saves all the requests for further processing, furthermore, works in the form of an "AS IS" process analysis without changing anything on the request. The message queueing mechanism will:
 
 * save a hash (MHASH) of the original request and a Unique Message ID (UMID);
 * respond with "Message received" to the sender with generated UMID.
 
-### **6.1.3 Validation and Verification**
+### **6.3 Validation and Verification**
 
 Messaging requests go through a final check to be clean of defects and inconsistencies, to check with external systems as necessary:
 
@@ -42,7 +38,7 @@ Messaging requests go through a final check to be clean of defects and inconsist
 * check for inconsistencies;
 * standard error messages and codes are used as a response to inconsistent requests.
 
-### **6.1.4 Workflow and Scheduling**
+### **6.4 Workflow and Scheduling**
 
 * In relation to batch logic, messages are scheduled against the availability of systems, throughput limitations, and rules set by programs.
 * Regular and repeat messages are scheduled.
@@ -50,13 +46,13 @@ Messaging requests go through a final check to be clean of defects and inconsist
 * Essential control logic may be included here specific to the individual batch sending and resending.
 * Additional workflow checks as required, including resending failed transactions.
 
-### **6.1.5 Batch logic**
+### **6.5 Batch logic**
 
 * Find unprocessed requests from Time Series Database.
 * Prepare each request for actual processing, requests may come as single or batch messages and every message needs to be treated as a separate entry.
 * It prepares unprocessed requests for actual processing.
 
-### **6.1.6 Audit trails**
+### **6.6 Audit trails**
 
 Each component of the messaging building block should be capable of producing transaction logs.  This is important to ensure that the system can be adequately monitored and troubleshooting can be performed efficiently and effectively.
 
@@ -72,27 +68,27 @@ The event logs and the transaction logs should **NOT** capture any sensitive dat
 
 Fetch and securely archive logs from working nodes is also expected.
 
-### **6.1.7 Security layer**
+### **6.7 Security layer**
 
 The security layer ensures that the content of messages and interactions with other Building Blocks are encrypted in transit. The security layer follows these requirements:
 
 * The communication must be TLS-secured using client authentication, Transport Layer Security protocol (TLS) 1.2 and above should be used to protect the confidentiality and integrity of the data in transit.
 * Personal profiles must never be disclosed to any unauthorized party.
 
-## 6.2 Design and Components of Messaging Building Block <a href="#docs-internal-guid-d85f59a4-7fff-1564-6ae2-86d67f36a258" id="docs-internal-guid-d85f59a4-7fff-1564-6ae2-86d67f36a258"></a>
+## Design and Components of Messaging Building Block <a href="#docs-internal-guid-d85f59a4-7fff-1564-6ae2-86d67f36a258" id="docs-internal-guid-d85f59a4-7fff-1564-6ae2-86d67f36a258"></a>
 
 1. The Messaging Building Block is part of the GovStack implementation and is prompted to open up a two-way communication channel to deliver and capture messages/data between the GovStack systems and the end users, physical and legal persons.
 2. As a rule, the Messaging Building Block does not own any information but is carrying the minimum amount of (meta) data needed to transfer/publish a message. Messaging Building Block allows other Building Blocks and applications to reach out to customers/citizens in order for them to be able to make a decision or access a service. This Building Block can also be used for broadcasting a disaster message.
 3. Messaging policies are configurable modalities and channels that can be accessed/utilized through the Messaging Building Block in order to reach out to the users or groups. This Building Block is using existing applications/channels, such as e-mail, SMS, and messaging platforms for enabling users to subscribe to an application/channel provided by Messaging Building Block itself for text-based content.
 4. Having published its messaging policies and services at the Information Mediator Building Block, the other Building Blocks and applications can discover and use the services of the Messaging Building Block.
 5. Messaging Building Block allows for asynchronous communication, using either point-to-point communication or a Pub/Sub model (using Information Mediator Building Block) where the user is subscribed to a message room/group and will be receiving all messages intended for the “mother of newborn child” group.
-6. Security. Before allowing any messages to be published, the Messaging Building Block fetches a corresponding ID and a role or a session token available for the user for authentication and access purposes. Incorporates privacy into its design when the purpose of the authentication is not revealed if a service provider sends an authentication request.
+6. Security: Before allowing any messages to be published, the Messaging Building Block fetches a corresponding ID and a role or a session token available for the user for authentication and access purposes. Incorporates privacy into its design when the purpose of the authentication is not revealed if a service provider sends an authentication request.
 
-## **6.3 Example Security Requirement**
+## **Example Security Requirement**
 
-List any cross-cutting security requirements that apply to the context from the [6. Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf).
+List any cross-cutting security requirements that apply to the context from [Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf).
 
-&#x20;The messaging system must comply with the security requirements on the security [building block](https://docs.google.com/document/d/1ZuR52EJm-iWWXCNpkAEZXFPRF1Cg1ciJ/edit) on:
+The messaging system must comply with the security requirements on the security [building block](https://docs.google.com/document/d/1ZuR52EJm-iWWXCNpkAEZXFPRF1Cg1ciJ/edit) on:
 
 * **4 Key Security Functional Requirements**
 * **5.1 Privacy**
@@ -110,9 +106,7 @@ List any cross-cutting security requirements that apply to the context from the 
 * **6.14 Social Network, Media and Engineering Threat Management Requirements**
 * **6.21 Fraud Prevention, Detection and Management Requirements**
 
-## **6.4 Messaging Building Block technical requirements**
-
-
+## **Messaging Building Block technical requirements**
 
 | **Requirement**                                                                                                                                                                                                                     | **Type (Must/Should/May)** |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
