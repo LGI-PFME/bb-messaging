@@ -46,7 +46,7 @@ Admin of the room must be able to choose the policy profile with the configurati
 
 Unsent and unsuccessfully delivered messages must remain in a queue until being successfully delivered or otherwise permanently processed.
 
-### **Messages Delivery Statuses:**
+### **Messages Delivery Statuses**
 
 Pending: initial state for all messages waiting to be queued.
 
@@ -60,7 +60,7 @@ Errored: messages with error during delivery.
 
 Failed: messages that are errored and we gave up sending.
 
-### Delivery business rules:
+### Delivery business rules
 
 Messages not delivered in a period of 24 hours: Any errored or queued messages more than 24 hours old must be labeled as failed and go out of the queue.
 
@@ -70,7 +70,7 @@ Messages retrial: Errored messages must be retried for 24 hours.
 
 Software update versioning follows the concept of [Semantic Versioning](https://semver.org/).
 
-## 5.8 MUST be backward compatible in case of updates within the same major release
+## 5.8 MUST be backwards compatible in case of updates within the same major release
 
 When adding new functionalities and/or messaging platforms, previous developments must remain intact if not deliberately changed or removed.
 

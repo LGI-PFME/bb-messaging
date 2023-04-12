@@ -12,19 +12,19 @@ This section lists workflows that this Building Block must support. Other workfl
 
 ## 9.1    Standards
 
-&#x20;**** The workflows MUST adhere to all standards defined in this document as well as in the GovStack architecture document (link to appropriate section in architecture document)
+The workflows MUST adhere to all standards defined in this document as well as in the [GovStack architecture document](https://govstack.gitbook.io/specification/architecture-and-nonfunctional-requirements).
 
 ## 9.2   Workflow diagram <a href="#_z337ya" id="_z337ya"></a>
 
 ### 9.2.1 Prerequisites and dependencies <a href="#_3j2qqm3" id="_3j2qqm3"></a>
 
-The main prerequisite for Person-to-Building Block **** communication is that there is an existing Sender/Source Building Block with the following properties:
+The main prerequisite for Person-to-Building Block communication is that there is an existing Sender/Source Building Block with the following properties:
 
 * the relevant credentials and details about the Person/Citizen to be addressed with;
 * the content of the message and a reference to a communication channel (contact details) to be used;
 * additionally, the service discovery service at the Information Mediator Building Block needs to be active. Information Mediator Building Block publishes the list of available services of the Messaging Building Block to the source GovStack Building Block, i.e. Workflow.
 
-A reference token should be carried throughout the communication session in order to save a point of reference for reverse communication back from the Person to the Building Block. In other words, the main prerequisite for Person-to-Building Block **** communication is the availability of a communication channel and a reference token.
+A reference token should be carried throughout the communication session in order to save a point of reference for reverse communication back from the Person to the Building Block. In other words, the main prerequisite for Person-to-Building Block communication is the availability of a communication channel and a reference token.
 
 #### **9.2.1.1      Description**
 
@@ -68,7 +68,7 @@ Information Mediator-->>Workflow BB: Proxy event to be handled<br />by Workflow 
 
 ### **7.3.1 Government/BB to Person communication**
 
-****
+
 
 | Sender Building Block: Identification of the Recipient /Person | <p>Sender/Publisher Building Block service application to retrieve relevant</p><p>Person and Contact Channel Data.</p> | Data structure may contain additional elements.                                                                                       |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
