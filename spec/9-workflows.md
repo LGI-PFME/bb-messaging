@@ -10,13 +10,9 @@ A workflow provides a detailed view of how this Building Block will interact wit
 
 This section lists workflows that this Building Block must support. Other workflows may be implemented in addition to those listed.
 
-## 9.1    Standards
+## 9.1   Workflow diagram <a href="#_z337ya" id="_z337ya"></a>
 
-The workflows MUST adhere to all standards defined in this document as well as in the [GovStack architecture document](https://govstack.gitbook.io/specification/architecture-and-nonfunctional-requirements).
-
-## 9.2   Workflow diagram <a href="#_z337ya" id="_z337ya"></a>
-
-### 9.2.1 Prerequisites and dependencies <a href="#_3j2qqm3" id="_3j2qqm3"></a>
+### 9.1.1 Prerequisites and dependencies <a href="#_3j2qqm3" id="_3j2qqm3"></a>
 
 The main prerequisite for Person-to-Building Block communication is that there is an existing Sender/Source Building Block with the following properties:
 
@@ -26,15 +22,15 @@ The main prerequisite for Person-to-Building Block communication is that there i
 
 A reference token should be carried throughout the communication session in order to save a point of reference for reverse communication back from the Person to the Building Block. In other words, the main prerequisite for Person-to-Building Block communication is the availability of a communication channel and a reference token.
 
-#### **9.2.1.1      Description**
+#### **9.1.1.1      Description**
 
 This generic workflow is used to transfer messages between GovStack Building Block and the end user, Person. Data is submitted from a GovStack Building Block front-end application. This workflow shows a connection to GovStack Building Block (such as a government Health System Application) to convey a message that is associated with a real person.
 
-#### **9.2.1.2      Interaction with Other Building Blocks**
+#### **9.1.1.2      Interaction with Other Building Blocks**
 
 This workflow requires interaction with the Information Mediator Building Block and a source GovStack Building Block, for example, a Health Care Service Building Block or registry Building Block.
 
-#### **9.2.1.3      Sequence Diagram**
+#### **9.1.1.3      Sequence Diagram**
 
 The sequence diagram shows the flow of data between Building Blocks for this workflow.
 
@@ -64,9 +60,9 @@ Messaging BB-->>Information Mediator: Proxy event to<br />Information Mediator
 Information Mediator-->>Workflow BB: Proxy event to be handled<br />by Workflow BB
 ```
 
-## **9.3 Interactions**
+## **9.2 Interactions**
 
-### **7.3.1 Government/BB to Person communication**
+### **9.2.1 Government/BB to Person communication**
 
 
 
@@ -79,7 +75,7 @@ Information Mediator-->>Workflow BB: Proxy event to be handled<br />by Workflow 
 | Deliver message to the person                                  | Internal Data Structure from the respective channel.                                                                   | Internal Data structure from Communication Channels may contain additional elements.                                                  |
 | Publish Status for the original sender                         | User and Message IDs with Delivery Status containing date and time.                                                    | The Message's unique ID is preserved to keep up its status updated.                                                                   |
 
-### **9.3.2** Person to Government/BB communication
+### **9.2.2** Person to Government/Building Block communication
 
 | Person: Messaging receival from the communication channel                    | Text message and User ID.                                                                                                  | Internal Data structure from Communication Channels may contain additional elements.    |
 | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
