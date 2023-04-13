@@ -7,7 +7,7 @@ description: This section provides context for this Building Block.
 Utilizing a secure communication protocol, the Messaging Building Block establishes a communication channel between GovStack services and end customers, and citizens, in a GovStack implementation.
 
 * For green-fields development, it helps developers to build communication components on top of different GovStack services to make use of the federated architecture and passing messages, including machine and human-triggered (both synchronous and asynchronous) messages.
-* Messaging Building Block is a standalone messaging gateway/client/proxy (including all possible modalities: email, SMS etc.), but can also facilitate connections with existing messaging service providers, hence it is making **** the adoption process less disruptive for end users.
+* Messaging Building Block is a standalone messaging gateway/client/proxy (including all possible modalities: email, SMS etc.), but can also facilitate connections with existing messaging service providers, hence it is making the adoption process less disruptive for end users.
 
 This Building Block can be used for messaging events in many different applications and use cases such as:
 
