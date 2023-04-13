@@ -6,8 +6,8 @@ description: >-
 
 # 1 Version History
 
-| Version | Authors                                                                                                                                                                                            | Comment      |
-| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| 0.9     | Rainer Türner (Information System Authority of Estonia), Magnus Hult (Element.io), John Cordeiro and Martin Karner (Estonian ICT Cluster), Bramhanand Jha (India's National e-Governance Division) | no comments. |
-|         |                                                                                                                                                                                                    |              |
-|         |                                                                                                                                                                                                    |              |
+| Version | Authors                                                         | Comment |
+| ------- | --------------------------------------------------------------- | ------- |
+| 0.9     | Martin Karner, Rainer Türner, John Cordeiro                     |         |
+| 1.0     | Martin Karner, Rainer Türner, John Cordeiro, Dr. P. S. Ramkumar |         |
+|         |                                                                 |         |
