@@ -11,7 +11,7 @@
     {
       "uuid": "94a5a195-69b3-41be-97df-4e1fb273a7d3",
       "type": "http",
-      "documentation": "",
+      "documentation": "Get status of sent emails. Use both \"api_key\" and \"requestUID\" in your request.",
       "method": "get",
       "endpoint": "status/email",
       "responses": [
@@ -26,11 +26,55 @@
           "filePath": "",
           "databucketID": "",
           "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "requestUID",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "api_key",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "staus",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "5a2bba29-07fe-4c79-aefa-1314a15aada9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "GET"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": true
+          "default": false
         }
       ],
       "enabled": true,
