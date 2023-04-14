@@ -60,7 +60,7 @@ Given(
 );
 
 When(
-  'User sends {string} request with given {string} as api_key and valid requestUID',
+  'User sends {string} request with {string} as api_key and valid requestUID',
   (method, apiKey) =>
     specStatusEmail
       .withMethod(method)
@@ -198,28 +198,26 @@ When('User sends {string} request with valid requestUID', method =>
     .withMethod(method)
     .withPath(baseUrl)
     .withHeaders(acceptHeader.key, acceptHeader.value)
-    .withHeaders(requestUID)
+    .withHeaders('requestUID', requestUID)
 );
 
 When(
-  'The request is missing an api_key',
+  'The \\/status\\/email request is missing an api_key',
   () => 'The request is missing an api_key'
 );
 
 // Scenario: User is unable to check the status of an email due to missing required requestUID in the request
 // Other Given, When, Then are written in the aforementioned examples
-When(
-  'User sends {string} request with given {string} as api_key',
-  (method, apiKey) =>
-    specStatusEmail
-      .withMethod(method)
-      .withPath(baseUrl)
-      .withHeaders('api_key', apiKey)
-      .withHeaders(acceptHeader.key, acceptHeader.value)
+When('User sends {string} request with {string} as api_key', (method, apiKey) =>
+  specStatusEmail
+    .withMethod(method)
+    .withPath(baseUrl)
+    .withHeaders('api_key', apiKey)
+    .withHeaders(acceptHeader.key, acceptHeader.value)
 );
 
 When(
-  'The request is missing a requestUID',
+  'The \\/status\\/email request is missing a requestUID',
   () => 'The request is missing a requestUID'
 );
 
