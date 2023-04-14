@@ -11,17 +11,61 @@
     {
       "uuid": "94a5a195-69b3-41be-97df-4e1fb273a7d3",
       "type": "http",
-      "documentation": "",
+      "documentation": "Get status of sent emails. Use both \"api_key\" and \"requestUID\" in your request.",
       "method": "get",
       "endpoint": "status/email",
       "responses": [
         {
           "uuid": "352f32f1-e6de-47fd-9454-22f34b8592ad",
-          "body": "{}",
+          "body": "{\n  {{#each (queryParamRaw 'status')}}  \n    \"{{this}}\": 0{{#unless @last}},{{/unless}}  \n  {{/each}}\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
           "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "requestUID",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "api_key",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            },
+            {
+              "target": "query",
+              "modifier": "status",
+              "value": "",
+              "invert": true,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "5a2bba29-07fe-4c79-aefa-1314a15aada9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "Method unallowed",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "GET"
+            }
+          ],
           "bodyType": "INLINE",
           "filePath": "",
           "databucketID": "",
@@ -459,6 +503,72 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "1f20a3d3-8808-4aa9-9732-f9ea16a736f9",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "status/email",
+      "responses": [
+        {
+          "uuid": "f915ca9d-03ee-4e10-9c3d-b0a9866508f8",
+          "body": "",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "GET"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5d556757-3203-49a9-955b-b3f5bec03e75",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "status/email",
+      "responses": [
+        {
+          "uuid": "96a92cf0-7c3d-44ca-90ac-5775299939e9",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 405,
+          "label": "",
+          "headers": [
+            {
+              "key": "Allow",
+              "value": "GET"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -509,6 +619,14 @@
     {
       "type": "route",
       "uuid": "82e1b1eb-5e18-44b6-bf4f-c1e0e69128e9"
+    },
+    {
+      "type": "route",
+      "uuid": "1f20a3d3-8808-4aa9-9732-f9ea16a736f9"
+    },
+    {
+      "type": "route",
+      "uuid": "5d556757-3203-49a9-955b-b3f5bec03e75"
     }
   ],
   "proxyMode": false,

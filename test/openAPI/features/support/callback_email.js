@@ -42,6 +42,7 @@ Given(
     await specSendEmail.toss();
 
     requestUID = specSendEmail._response.json.requestUID;
+    requestUID = requestUID === undefined ? '' : requestUID;
 
     chai.expect(requestUID.length).to.be.greaterThan(0);
   }
@@ -98,6 +99,7 @@ Given(
     await specSendEmail.toss();
 
     requestUID = specSendEmail._response.json.requestUID;
+    requestUID = requestUID === undefined ? '' : requestUID;
 
     chai.expect(requestUID.length).to.be.greaterThan(0);
   }

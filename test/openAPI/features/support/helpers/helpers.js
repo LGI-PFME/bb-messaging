@@ -10,6 +10,7 @@ module.exports = {
   callbackEmailEndpoint: 'callback/email',
   sendSingleEmailEndpoint: 'send/email/single',
   sendBatchEmailsEndpoint: 'send/email/batch',
+  statusEmailEndpoint: 'status/email',
   contentTypeHeader: {
     key: 'content-type',
     value: 'application/json; charset=utf-8',
@@ -74,4 +75,19 @@ module.exports = {
       },
     },
   ],
+  statusEmailResponseSchema: {
+    type: 'object',
+    properties: {
+      scheduled: { type: 'number' },
+      processing: { type: 'number' },
+      deferred: { type: 'number' },
+      bounced: { type: 'number' },
+      'not sent': { type: 'number' },
+      delivered: { type: 'number' },
+    },
+  },
+  sortArray: array => array.sort(),
+  areArraysTheSame: (array1, array2) =>
+    array1.length === array2.length &&
+    array1.every((element, index) => element === array2[index]),
 };
