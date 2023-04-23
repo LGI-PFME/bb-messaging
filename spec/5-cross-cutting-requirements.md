@@ -20,7 +20,7 @@ Second, to be able to export the content of databases in the format of time-seri
 
 To achieve this, using "UPDATE" and "DELETE" queries in SQL commands SHOULD be disabled. If not, they MUST be avoided by developers and caught by automated tests if still used.
 
-## **5.2 Content of production-level databases SHOULD be continuously archived centrally**&#x20;
+## **5.2 Content of production-level databases SHOULD be continuously archived centrally**
 
 By having this capability, it´s possible to delete the content of processed data from production-level server databases right after they have been securely archived.
 
@@ -66,7 +66,7 @@ Messages not delivered in a period of 24 hours: Any errored or queued messages m
 
 Messages retrial: Errored messages must be retried for 24 hours.
 
-## 5.7 All published software updates MUST produce a new version number&#x20;
+## 5.7 All published software updates MUST produce a new version number
 
 Software update versioning follows the concept of [Semantic Versioning](https://semver.org/).
 
@@ -134,6 +134,6 @@ Full source code of the Building Block must be published as easily accessible op
 
 All custom developments are published under the MIT License by default if not clearly stated otherwise.
 
-## Security requirements&#x20;
+## Security requirements
 
-In case of not applying any or some of [GovStack's global cross-cutting security requirements](https://govstack.gitbook.io/specification/v/govstack-specification-main/security-requirements), listing all such cases is a must.
+In case of not applying any or some of [GovStack's global cross-cutting security requirements](https://govstack.gitbook.io/specification/v/1.0/security-requirements), listing all such cases is a must.

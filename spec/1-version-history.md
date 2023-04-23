@@ -6,8 +6,8 @@ description: >-
 
 # 1 Version History
 
-| Version | Authors                                                         | Comment |
-| ------- | --------------------------------------------------------------- | ------- |
-| 0.9     | Martin Karner, Rainer Türner, John Cordeiro                     |         |
-| 1.0     | Martin Karner, Rainer Türner, John Cordeiro, Dr. P. S. Ramkumar |         |
-|         |                                                                 |         |
+| Version | Authors                                                         | Comment           |
+| ------- | --------------------------------------------------------------- | ----------------- |
+| 0.9     | Martin Karner, Rainer Türner, John Cordeiro                     |                   |
+| 1.0     | Martin Karner, Rainer Türner, John Cordeiro, Dr. P. S. Ramkumar | Published Version |
+|         |                                                                 |                   |

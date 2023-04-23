@@ -8,9 +8,9 @@ description: >-
 
 This section provides a reference for APIs that should be implemented by this Building Block. The APIs defined here establish a blueprint for how the Building Block will interact with other Building Blocks. Additional APIs may be implemented by the Building Block, but the listed APIs define a minimal set of functionality that should be provided by any implementation of this Building Block.
 
-Messaging Building Blocks's APIs can be found from [https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/api](https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/api).
+[Messaging Building Blocks' APIs](https://github.com/GovStackWorkingGroup/bb-messaging/tree/1.0-QA/api).
 
-The [GovStack non-functional requirements document](https://govstack.gitbook.io/specification/architecture-and-nonfunctional-requirements/6-onboarding) provides additional information on how 'adaptors' may be used to translate an existing API to the patterns described.
+The [GovStack non-functional requirements document](https://govstack.gitbook.io/specification/v/1.0/architecture-and-nonfunctional-requirements/6-onboarding) provides additional information on how 'adaptors' may be used to translate an existing API to the patterns described.
 
 ## 8.1 Sending emails
 
@@ -105,9 +105,9 @@ Information about recipients is provided as `JSON` in `base64` format.
 
 ### 8.1.3 Responding to emails
 
-This API is designed to accept responses to emails that have been previously sent out by using the Messaging BB.
+This API is designed to accept responses to emails that have been previously sent out by using the Messaging Building Block.
 
-The protocol itself is lightweight and expects custom services by anyone using it. The Messaging BB is responsible for delivering the message and does not know (or want to know) anything about the content of it, how it will be used, etc.
+The protocol itself is lightweight and expects custom services from anyone using it. The Messaging Building Block is responsible for delivering the message and does not know (or want to know) anything about the content of it, how it will be used, etc.
 
 #### 8.1.3.1 Sample user story
 
@@ -130,7 +130,7 @@ SO THAT I could continue and keep track of email conversations taken place via G
 
 ### 8.1.4 Reading the status of emails
 
-This API is designed to provide information about the status of emails sent to the Messaging BB.
+This API is designed to provide information about the status of emails sent to the Messaging Building Block.
 
 #### 8.1.4.1 Sample user story
 
@@ -146,7 +146,7 @@ SO THAT I could contact such patients by using different means
 
 #### 8.1.4.3 States of emails
 
-Possible states of emails that can be queried are as following:
+Possible states of emails that can be queried are as follows:
 
 1. `scheduled`
 2. `processing`

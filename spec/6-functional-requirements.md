@@ -6,7 +6,7 @@ description: This section lists the technical capabilities of this Building Bloc
 
 This section lists the technical capabilities of the Messaging Building Block. The following components are needed to achieve the technical functionalities of the messaging Building Block.
 
-<figure><img src=".gitbook/assets/image3 (1) (1).png" alt=""><figcaption><p><a href="https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK">https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK</a></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image3 (1) (1).png" alt=""><figcaption><p><a href="https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK">https://app.diagrams.net/?thissrc=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK</a></p></figcaption></figure>
 
 ### 6.1 Messaging request initiation
 
@@ -20,7 +20,7 @@ Handles the initiation of input data processing from all the API messaging calls
 * allow API providers to limit the rate of consumption for all API users;
 * transform backend error messages into standardized messages so that all error messages look similar (this also eliminates exposing the backend code structure).
 
-&#x20;This request could come from two sources: external or internal. An external source could be another GovStack Building Block (e.g. the Registration Building Block). Either source must be appropriately authenticated and authorized to initiate the request. The request must contain at a minimum: the contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.
+This request could come from two sources: external or internal. An external source could be another GovStack Building Block (e.g. the Registration Building Block). Either source must be appropriately authenticated and authorized to initiate the request. The request must contain at a minimum: the contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.
 
 ### **6.2 Queuing**
 
@@ -54,7 +54,7 @@ Messaging requests go through a final check to be clean of defects and inconsist
 
 ### **6.6 Audit trails**
 
-Each component of the messaging building block should be capable of producing transaction logs.  This is important to ensure that the system can be adequately monitored and troubleshooting can be performed efficiently and effectively.
+Each component of the messaging building block should be capable of producing transaction logs. This is important to ensure that the system can be adequately monitored and troubleshooting can be performed efficiently and effectively.
 
 The components should also generate transaction logs for events that capture at least the following information:
 
@@ -88,7 +88,7 @@ The security layer ensures that the content of messages and interactions with ot
 
 List any cross-cutting security requirements that apply to the context from [Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf).
 
-The messaging system must comply with the security requirements on the security [building block](https://docs.google.com/document/d/1ZuR52EJm-iWWXCNpkAEZXFPRF1Cg1ciJ/edit) on:
+The messaging system must comply with the security requirements on the [Security Building Block ](https://govstack.gitbook.io/specification/v/1.0/security-requirements)on:
 
 * **4 Key Security Functional Requirements**
 * **5.1 Privacy**
@@ -110,7 +110,7 @@ The messaging system must comply with the security requirements on the security 
 
 | **Requirement**                                                                                                                                                                                                                     | **Type (Must/Should/May)** |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Secure API exposure:  All APIs exposed via secure socket connections (HTTPS).                                                                                                                                                       | Must                       |
+| Secure API exposure: All APIs exposed via secure socket connections (HTTPS).                                                                                                                                                        | Must                       |
 | Client application authorisation tokens: Client applications must send authorization tokens in the authorization header of the request to authenticate users and the API Management Gateway will verify whether the token is valid. | Must                       |
 | Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.                                                                                                        | Must                       |
 | Manage access quotas and throttling.                                                                                                                                                                                                | May                        |
