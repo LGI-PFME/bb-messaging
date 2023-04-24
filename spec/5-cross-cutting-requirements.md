@@ -10,7 +10,7 @@ The Cross-cutting requirements described in this section are an extension of the
 
 Cross-cutting requirements will use the same language (MUST or SHOULD) as specified in the architecture document.
 
-## 5.1 Denormalized databases MUST be used
+## 5.1 Use de-normalized databases (REQUIRED)
 
 There are two main reasons for using denormalized databases instead of traditional normalized databases.
 
@@ -20,29 +20,29 @@ Second, to be able to export the content of databases in the format of time-seri
 
 To achieve this, using "UPDATE" and "DELETE" queries in SQL commands SHOULD be disabled. If not, they MUST be avoided by developers and caught by automated tests if still used.
 
-## **5.2 Content of production-level databases SHOULD be continuously archived centrally**
+## **5.2 Archive Content of production-level databases continuously (RECOMMENDED)**
 
-By having this capability, it´s possible to delete the content of processed data from production-level server databases right after they have been securely archived.
+By having this capability, it is possible to delete the content of processed data from production-level server databases right after they have been securely archived.
 
 This is important to reduce the impact of potential data breaches by security incidents of potentially N number of application servers hosted by different parties.
 
-## **5.3 Time-series databases SHOULD be convertible to ready-to-use relational databases and vice versa**
+## **5.3 Time-series databases should be convertible to ready-to-use relational databases and vice versa (RECOMMENDED)**
 
 If done so, using archived datasets, either fully or partially, allows to recover and/or re-engineer lost databases (or just datasets of interest) automatically and in a matter of seconds if such pipelines have been predefined.
 
 Also, by converting the content of relational databases into a format of time-series databases, these purely text-based datasets are easily usable by different kinds of databases, analytics tools, etc., not just by the relational database used at first.
 
-## **5.4 SHOULD enable message replication**
+## **5.4 Enable message replication (RECOMMENDED)**
 
 In order to prevent single points of failure, messages must be replicated on at least 2 different service providers.
 
 In case of message replication, all unprocessed replicated messages MUST be kept track of and relevantly updated in order to prevent re-processing them.
 
-## **5.5 MUST support policy configuration**
+## **5.5 Support policy configuration (REQUIRED)**
 
 Admin of the room must be able to choose the policy profile with the configuration of message provider, e.g. retrial frequency.
 
-## **5.6** MUST support queuing mechanism
+## **5.6** Support queuing mechanism (REQUIRED)
 
 Unsent and unsuccessfully delivered messages must remain in a queue until being successfully delivered or otherwise permanently processed.
 
@@ -66,56 +66,36 @@ Messages not delivered in a period of 24 hours: Any errored or queued messages m
 
 Messages retrial: Errored messages must be retried for 24 hours.
 
-## 5.7 All published software updates MUST produce a new version number
-
-Software update versioning follows the concept of [Semantic Versioning](https://semver.org/).
-
-## 5.8 MUST be backwards compatible in case of updates within the same major release
-
-When adding new functionalities and/or messaging platforms, previous developments must remain intact if not deliberately changed or removed.
-
-## 5.9 MUST follow OpenAPI annotations
-
-A protocol describing the technical usage of any given or planned messaging types/platforms is mandatory.
-
-The source code of applications must be covered with OpenAPI annotations.
-
-Deployment of an application produces an updated version of publicly accessible Swagger User Interface in case the technical specification has changed.
-
-## **5.10 MUST use test-driven development**
-
-All technical functionalities must be fully covered by automated tests.
-
-## **5.11 All technical components MUST be stateless and horizontally scalable**
+## **5.7 Implement using stateless and horizontally scalable components (REQUIRED)**
 
 Technical components (with the exception of relational databases) must be stateless in a sense of the [Service statelessness principle](https://en.wikipedia.org/wiki/Service\_statelessness\_principle).
 
-## **5.12 Databases SHOULD be horizontally scalable**
+## **5.8 Implement horizontally scalable Databases (RECOMMENDED)**
 
 At least on the level of active-passive nodes based on the principle of "eventually consistent".
 
-## **5.13 Messaging as a service MUST be vendor-neutral**
+## **5.9 Messaging as a service must be vendor-neutral (REQUIRED)**
 
 If Messaging Building Block protocols are followed, the technical stack used to provide messaging as a service is vendor-neutral, meaning that anyone is free to use technical solutions of their own choice.
 
-## **5.14** Only allowed participants MUST be able to join the network
+## **5.10** Only allowed participants can join the network (REQUIRED)
 
 Only allowed participants are allowed to provide and use the services of Messaging Building Block.
 
-## 5.15 Central databases of users' contacts and readable messages MUST NOT exist at Messaging Building Block
+## 5.11 Do not store users' contacts and readable messages at Messaging Building Block (REQUIRED)
 
 Messaging Building Block is a dumb messaging proxy that gets all of its relevant input from its clients. This also includes the names and contact information of all relevant participants.
 
 Such sensitive information may not exist in its raw and/or re-engineerable form nor in databases or logs.
 
-## **5.16 Message content MUST be readable only by intended participants**
+## **5.12 Message content must be readable only by intended participants (REQUIRED)**
 
 Depending on the specific use case, this may mean
 
 1. [end-to-end encryption](https://en.wikipedia.org/wiki/End-to-end\_encryption); or
 2. [SNI routing](https://en.wikipedia.org/wiki/Server\_Name\_Indication).
 
-## **5.17 MUST support audit logging**
+## **5.13 Audit logs must be provided (REQUIRED)**
 
 Every instance of a service must generate audit logs containing information about all of its actions regarding timestamps, related parties, identifiers to operations performed, and HTTP response codes for any given action.
 
@@ -124,16 +104,3 @@ Every instance of a service must generate audit logs containing information abou
 * Audit logs must be accessible by a given endpoint by the central service provider only.
 * Audit logs should be periodically removed from their original source after a defined period of time.
 
-## **5.18 Cloud native is a MUST**
-
-All stand-alone applications used and services created based upon them must be cloud-native in a sense of [cloud-native computing](https://en.wikipedia.org/wiki/Cloud-native\_computing).
-
-## **5.19** Source code MUST be published under a permissive license and be easily accessible by a public repository
-
-Full source code of the Building Block must be published as easily accessible open-source code.
-
-All custom developments are published under the MIT License by default if not clearly stated otherwise.
-
-## Security requirements
-
-In case of not applying any or some of [GovStack's global cross-cutting security requirements](https://govstack.gitbook.io/specification/v/1.0/security-requirements), listing all such cases is a must.
