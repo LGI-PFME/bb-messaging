@@ -13,6 +13,14 @@ Link to use cases document – this document may be a valuable resource while de
 
 Link to GitHub repository and OpenAPI documentation site for the Building Blocks.
 
+## 10.1 Key Decision Log
+
+[A historical log of key decisions regarding this Building Block](https://govstack-global.atlassian.net/l/cp/1ePehGu6).
+
+## 10.2 Future Considerations
+
+[A list of topics that may be relevant to future versions of this Building Block](https://govstack-global.atlassian.net/l/cp/UtVjJRD7).
+
 ## ANNEX I - Use Case Tables and Component diagrams
 
 <figure><img src=".gitbook/assets/image3 (2).png" alt=""><figcaption></figcaption></figure>
@@ -107,11 +115,3 @@ Link to GitHub repository and OpenAPI documentation site for the Building Blocks
 
 | Interaction with Scheduling Building Block | Reminder messages, time-based triggers. | <ol><li>Appointment booking confirmation, where there are two levels of confirmation:</li></ol><ul><li>Immediate confirmation: I have received the message.</li><li>I have deposited a message, and have given the message a token number. And on the basis of this, I can pick up the message or a reply later.</li></ul><ol start="2"><li>Reminder message is already there and an event will trigger it.</li><li>Event notification, trigger: for example: please join the call.</li></ol> |
 | ------------------------------------------ | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-## 10.1 Key Decision Log
-
-[A historical log of key decisions regarding this Building Block](https://govstack-global.atlassian.net/l/cp/1ePehGu6).
-
-## 10.2 Future Considerations
-
-[A list of topics that may be relevant to future versions of this Building Block](https://govstack-global.atlassian.net/l/cp/UtVjJRD7).
