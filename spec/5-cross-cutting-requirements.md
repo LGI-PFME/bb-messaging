@@ -68,3 +68,75 @@ Depending on the specific use case, this may mean [end-to-end encryption](https:
 
 Every instance of a service must generate audit logs containing information about all of its actions regarding timestamps, related parties, identifiers to operations performed, and HTTP response codes for any given action. Audit logs may not contain the actual content of the message. Audit logs must be in a time series database format. Audit logs must be accessible by a given endpoint by the central service provider only. Audit logs should be periodically removed from their original source after a defined period of time.
 
+## **5.14** Secure API exposure **(REQUIRED)**
+
+All APIs are exposed via secure socket connections (HTTPS).
+
+## **5.15** Client application authorisation tokens **(REQUIRED)**
+
+Client applications must send authorization tokens in the authorization header of the request to authenticate users and the API Management Gateway will verify whether the token is valid.
+
+## **5.16** Input validation checks **(REQUIRED)**
+
+Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.
+
+## **5.17 A**ccess quotas **(**OPTIONAL**)**
+
+Manage access quotas and throttling.
+
+## **5.18 API calls** **(REQUIRED)**
+
+Logging of all API calls made.
+
+## **5.19 API consumption (**RECOMMENDED**)**
+
+Allow API providers to limit the rate of consumption for all API users.
+
+## **5.20 S**tandardized backend error messages **(REQUIRED)**
+
+Transform backend error messages into standardized messages so that all error messages look similar; this also eliminates exposing the backend code structure.
+
+## **5.21** Minimal data for requests **(REQUIRED)**
+
+Contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.
+
+## **5.22** Messaging processing **(REQUIRED)**
+
+Asynchronous messaging processing. OpenAPI specifications for calling this function; resource models and data structures, internal and external interfaces.
+
+## **5.23** Stateless architecture **(REQUIRED)**
+
+Stateless architecture.
+
+## **5.24** Message broker tool **(**RECOMMENDED**)**
+
+Message broker tool to enable performant queueing mechanisms such as RabbitMQ, Apache/Kafka, or GRPC for data transfer speed purposes.
+
+## **5.25 U**nstructured DATABASES **(**REQUIRED**)**
+
+Databases with unstructured data should be treated with Elasticsearch/Logstash.
+
+## **5.26** Message broker tool **(**RECOMMENDED**)**
+
+End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.
+
+## **Example Security Requirement**
+
+List any cross-cutting security requirements that apply to the context from [Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf). The messaging system must comply with the security requirements on the [Security Building Block ](https://govstack.gitbook.io/specification/v/1.0/security-requirements)on:
+
+* 4 Key Security Functional Requirements
+* 5.1 Privacy
+* 5.2 Audit Logging
+* 5.3 Source Code
+* 6.1 API Management and Gateway Functional Requirements
+* 6.2 Identity and Access Management (IAM) Suite Functional Requirements
+* 6.3 Digital ID/Certificate Functional Requirements
+* 6.4 Certificate Authority Functional Requirements
+* 6.8 Virus, Ransomware, Malware, Spam, Phishing Protection Requirements
+* 6.9 Denial of Service Attack Prevention Requirements
+* 6.10 Applications Development Vulnerability Prevention Requirements
+* 6.11 Infrastructure Vulnerability Remediation Requirements
+* 6.13 Data Encryption at Rest and In Transit Requirements
+* 6.14 Social Network, Media and Engineering Threat Management Requirements
+* 6.21 Fraud Prevention, Detection and Management Requirements
+
