@@ -10,7 +10,7 @@ This section provides a reference for APIs that should be implemented by this Bu
 
 The [GovStack non-functional requirements document](https://govstack.gitbook.io/specification/v/1.0/architecture-and-nonfunctional-requirements/6-onboarding) provides additional information on how 'adaptors' may be used to translate an existing API to the patterns described here. This section also provides guidance on how candidate products are tested and how GovStack validates a product's API against the API specifications defined here.&#x20;
 
-The tests for the Scheduler Building Block can be found in [this GitHub repository.](https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/test/openAPI)
+The tests for the Messaging Building Block can be found in [this GitHub repository.](https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/test/openAPI)
 
 ## 8.1 Government to person (G2P)
 
