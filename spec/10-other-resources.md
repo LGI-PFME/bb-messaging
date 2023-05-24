@@ -7,12 +7,6 @@ description: >-
 
 # 10 Other Resources
 
-Link to architecture requirements document (and specific sections within that document, such as cross-functional requirements, and general recommendations).
-
-Link to use cases document – this document may be a valuable resource while developing workflows to ensure that a variety of different use cases are covered by the Building Block definition.
-
-Link to GitHub repository and OpenAPI documentation site for the Building Blocks.
-
 ## 10.1 Key Decision Log
 
 [A historical log of key decisions regarding this Building Block](https://govstack-global.atlassian.net/l/cp/1ePehGu6).
@@ -84,8 +78,6 @@ Link to GitHub repository and OpenAPI documentation site for the Building Blocks
 | **Best Practices**                                                                                                                                 | <p>· Mass Messaging System.</p><p>· Universal Communication Interface.</p><p>· Reliable SMS Code.</p><p>· Common Alert Protocol.</p><p>· Warning through SMS (Pull SMS Push SMS).</p><p>· Mobile App Solution: - Notification through a unified mobile app – UMANG (Unified Mobile App for New-Age Governance).</p><p>· Voice/text bot.</p><p>· Warning Through social media: WhatsApp, Facebook, Twitter, and Mobile Apps.</p><p>· Electronic and Print Media for Publicity and Broadcast of Warning: National/Regional Bulletin, Poster and Films, Radio and TV Talks, and Newspapers.</p><p>· Mode of Dissemination: FAX, GTS, Email, SMS, FTP, Internet, Website, Telephone, Tale-fax, VHF/HFRT, Radio/TV network, IVRS (Interactive Voice Response System) Toll-Free Number, NAVTEX.</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ## Annex II User Journeys
-
-[Table 1](https://docs.google.com/spreadsheets/d/19Ej86NKsBPY6hLF9Q-GNS4GSlICtTe7ABpOj2KTAqSA/edit?usp=sharing)
 
 #### User journey
 
