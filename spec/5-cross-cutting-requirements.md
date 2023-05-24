@@ -32,11 +32,11 @@ Admin of the room must be able to choose the policy profile with the configurati
 
 Unsent and unsuccessfully delivered messages must remain in a queue until being successfully delivered or otherwise permanently processed.
 
-#### **Messages Delivery Statuses**
+### **Messages Delivery Statuses**
 
 Pending (initial state for all messages waiting to be queued); Queued (messages that are in the queue to be sent); Sent (messages with proper confirmation that was sent to the provider); Delivered (messages with proper confirmation that was delivered to the end-user); Errored (messages with error during delivery); Failed (messages that are errored and we gave up sending).
 
-#### Delivery business rules
+### Delivery business rules
 
 Messages not delivered in a period of 24 hours (any errored or queued messages more than 24 hours old must be labelled as failed and go out of the queue); Messages retrial (Errored messages must be retried for 24 hours).
 
@@ -110,7 +110,7 @@ Stateless architecture.
 
 ## **5.24** Message broker tool **(**RECOMMENDED**)**
 
-Message broker tool to enable performant queueing mechanisms such as RabbitMQ, Apache/Kafka, or GRPC for data transfer speed purposes.
+Message broker tool to enable performant queueing mechanisms such as RabbitMQApache/Kafka, or GRPC for data transfer speed purposes.
 
 ## **5.25 U**nstructured DATABASES **(**REQUIRED**)**
 
@@ -119,24 +119,4 @@ Databases with unstructured data should be treated with Elasticsearch/Logstash.
 ## **5.26** Message broker tool **(**RECOMMENDED**)**
 
 End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.
-
-## **Example Security Requirement**
-
-List any cross-cutting security requirements that apply to the context from [Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf). The messaging system must comply with the security requirements on the [Security Building Block ](https://govstack.gitbook.io/specification/v/1.0/security-requirements)on:
-
-* 4 Key Security Functional Requirements
-* 5.1 Privacy
-* 5.2 Audit Logging
-* 5.3 Source Code
-* 6.1 API Management and Gateway Functional Requirements
-* 6.2 Identity and Access Management (IAM) Suite Functional Requirements
-* 6.3 Digital ID/Certificate Functional Requirements
-* 6.4 Certificate Authority Functional Requirements
-* 6.8 Virus, Ransomware, Malware, Spam, Phishing Protection Requirements
-* 6.9 Denial of Service Attack Prevention Requirements
-* 6.10 Applications Development Vulnerability Prevention Requirements
-* 6.11 Infrastructure Vulnerability Remediation Requirements
-* 6.13 Data Encryption at Rest and In Transit Requirements
-* 6.14 Social Network, Media and Engineering Threat Management Requirements
-* 6.21 Fraud Prevention, Detection and Management Requirements
 
