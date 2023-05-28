@@ -10,10 +10,10 @@ The Messaging Building Block is a standalone messaging gateway/client/proxy (inc
 
 ## 4.1 Government to person (G2P) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
-* informing citizens about their registration;
-* reminding and requesting citizens' confirmation for appointment booking or other events;
-* delivering information at scale to citizens;
-* alerting citizens in emergency contexts.
+* informing End clients about their registration;
+* reminding and requesting End clients' confirmation for appointment booking or other events;
+* delivering information at scale to End clients;
+* alerting End clients in emergency contexts.
 
 ## 4.2 Person to Government (P2G) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
