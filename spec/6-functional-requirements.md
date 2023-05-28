@@ -43,12 +43,12 @@ Messaging requests go through a final check to be clean of defects and inconsist
 * In relation to batch logic, messages are scheduled against the availability of systems, throughput limitations, and rules set by programs.
 * Regular and repeat messages are scheduled.
 * Batches may be given prioritization in the queue according to the message settings.
-* Essential control logic may be included here specific to the individual batch sending and resending.
+* The essential control logic may be included here specific to the individual batch sending and resending.
 * Additional workflow checks as required, including resending failed transactions.
 
 ### **6.5 Batch logic**
 
-* Find unprocessed requests from Time Series Database.
+* Find unprocessed requests from a database.
 * Prepare each request for actual processing, requests may come as single or batch messages and every message needs to be treated as a separate entry.
 * It prepares unprocessed requests for actual processing.
 
@@ -103,24 +103,9 @@ The messaging system must comply with the security requirements on the security 
 * **6.10 Applications Development Vulnerability Prevention Requirements**
 * **6.11 Infrastructure Vulnerability Remediation Requirements**
 * **6.13 Data Encryption at Rest and In Transit Requirements**
-* **6.14 Social Network, Media and Engineering Threat Management Requirements**
-* **6.21 Fraud Prevention, Detection and Management Requirements**
+* **6.14 Social Network, Media, and Engineering Threat Management Requirements**
+* **6.21 Fraud Prevention, Detection, and Management Requirements**
 
 ## **Messaging Building Block technical requirements**
 
-| **Requirement**                                                                                                                                                                                                                     | **Type (Must/Should/May)** |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Secure API exposure:  All APIs exposed via secure socket connections (HTTPS).                                                                                                                                                       | Must                       |
-| Client application authorisation tokens: Client applications must send authorization tokens in the authorization header of the request to authenticate users and the API Management Gateway will verify whether the token is valid. | Must                       |
-| Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.                                                                                                        | Must                       |
-| Manage access quotas and throttling.                                                                                                                                                                                                | May                        |
-| Logging of all API calls made.                                                                                                                                                                                                      | Must                       |
-| Allow API providers to limit the rate of consumption for all API users.                                                                                                                                                             | Should                     |
-| Transform backend error messages into standardized messages so that all error messages look similar; this also eliminates exposing the backend code structure.                                                                      | Should                     |
-| Minimal data for requests: contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.                                                            | Must                       |
-| Asynchronous messaging processing.                                                                                                                                                                                                  | Must                       |
-| OpenAPI specifications for calling this function; resource models and data structures, internal and external interfaces.                                                                                                            | Must                       |
-| Stateless architecture.                                                                                                                                                                                                             | Must                       |
-| Message broker tool to enable performant queueing mechanisms such as RabbitMQ, Apache/Kafka, or GRPC for data transfer speed purposes.                                                                                              | Should                     |
-| Databases with unstructured data should be treated with Elasticsearch/Logstash.                                                                                                                                                     | Must                       |
-| End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.                                                                                 | Should                     |
+<table data-header-hidden><thead><tr><th width="431.5"></th><th></th></tr></thead><tbody><tr><td><strong>Requirement</strong></td><td><strong>Type (Must/Should/May)</strong></td></tr><tr><td>Secure API exposure:  All APIs exposed via secure socket connections (HTTPS).</td><td>Must</td></tr><tr><td>Client application authorisation tokens: Client applications must send authorization tokens in the authorization header of the request to authenticate users and the API Management Gateway will verify whether the token is valid.</td><td>Must</td></tr><tr><td>Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.</td><td>Must</td></tr><tr><td>Manage access quotas and throttling.</td><td>May</td></tr><tr><td>Logging of all API calls made.</td><td>Must</td></tr><tr><td>Allow API providers to limit the rate of consumption for all API users.</td><td>Should</td></tr><tr><td>Transform backend error messages into standardized messages so that all error messages look similar; this also eliminates exposing the backend code structure.</td><td>Should</td></tr><tr><td>Minimal data for requests: contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.</td><td>Must</td></tr><tr><td>Asynchronous messaging processing.</td><td>Must</td></tr><tr><td>OpenAPI specifications for calling this function; resource models and data structures, internal and external interfaces.</td><td>Must</td></tr><tr><td>Stateless architecture.</td><td>Must</td></tr><tr><td>Message broker tool to enable performant queueing mechanisms such as RabbitMQ, Apache/Kafka, or GRPC for data transfer speed purposes.</td><td>Should</td></tr><tr><td>Databases with unstructured data should be treated with Elasticsearch/Logstash.</td><td>Must</td></tr><tr><td>End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.</td><td>Should</td></tr></tbody></table>
