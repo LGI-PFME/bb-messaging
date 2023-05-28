@@ -40,7 +40,7 @@ In case of message replication, all unprocessed replicated messages MUST be kept
 
 ## **5.5 MUST support policy configuration**
 
-Admin of the room must be able to choose the policy profile with the configuration of message provider, e.g. retrial frequency.
+Admin of the room must be able to choose the policy profile with the configuration of the message provider, e.g. retrial frequency.
 
 ## **5.6** MUST support queuing mechanism
 
@@ -48,29 +48,29 @@ Unsent and unsuccessfully delivered messages must remain in a queue until being 
 
 ### **Messages Delivery Statuses**
 
-Pending: initial state for all messages waiting to be queued.
+**Pending:** initial state for all messages waiting to be queued.
 
-Queued: messages that are in the queue to be sent.
+**Queued:** messages that are in the queue to be sent.
 
-Sent: messages with proper confirmation that was sent to the provider.
+**Sent:** messages with proper confirmation that was sent to the provider.
 
-Delivered: messages with proper confirmation that was delivered to the end-user.
+**Delivered:** messages with proper confirmation that was delivered to the end-user.
 
-Errored: messages with error during delivery.
+**Errored:** messages with an error during delivery.
 
-Failed: messages that are errored and we gave up sending.
+**Failed:** messages that are errored and we gave up sending.
 
 ### Delivery business rules
 
-Messages not delivered in a period of 24 hours: Any errored or queued messages more than 24 hours old must be labeled as failed and go out of the queue.
+**Messages not delivered in a period of 24 hours:** Any errored or queued messages more than 24 hours old must be labeled as failed and be removed from the queue.
 
-Messages retrial: Errored messages must be retried for 24 hours.
+**Messages retrial:** Errored messages must be retried for 24 hours.
 
 ## 5.7 All published software updates MUST produce a new version number&#x20;
 
 Software update versioning follows the concept of [Semantic Versioning](https://semver.org/).
 
-## 5.8 MUST be backwards compatible in case of updates within the same major release
+## 5.8 MUST be backward compatible in case of updates within the same major release
 
 When adding new functionalities and/or messaging platforms, previous developments must remain intact if not deliberately changed or removed.
 
@@ -80,7 +80,7 @@ A protocol describing the technical usage of any given or planned messaging type
 
 The source code of applications must be covered with OpenAPI annotations.
 
-Deployment of an application produces an updated version of publicly accessible Swagger User Interface in case the technical specification has changed.
+Deployment of an application produces an updated version of the publicly accessible Swagger User Interface in case the technical specification has changed.
 
 ## **5.10 MUST use test-driven development**
 
@@ -88,15 +88,15 @@ All technical functionalities must be fully covered by automated tests.
 
 ## **5.11 All technical components MUST be stateless and horizontally scalable**
 
-Technical components (with the exception of relational databases) must be stateless in a sense of the [Service statelessness principle](https://en.wikipedia.org/wiki/Service\_statelessness\_principle).
+Technical components (with the exception of relational databases) must be stateless in the sense of the [Service statelessness principle](https://en.wikipedia.org/wiki/Service\_statelessness\_principle).
 
 ## **5.12 Databases SHOULD be horizontally scalable**
 
-At least on the level of active-passive nodes based on the principle of "eventually consistent".
+At least on the level of active-passive nodes based on the principle of [Eventually consistent](https://en.wikipedia.org/wiki/Eventual\_consistency).
 
 ## **5.13 Messaging as a service MUST be vendor-neutral**
 
-If Messaging Building Block protocols are followed, the technical stack used to provide messaging as a service is vendor-neutral, meaning that anyone is free to use technical solutions of their own choice.
+If Messaging Building Block protocols are followed, the technical stack used to provide messaging as a service, is vendor-neutral, meaning that anyone is free to use technical solutions of their own choice.
 
 ## **5.14** Only allowed participants MUST be able to join the network
 
@@ -126,11 +126,11 @@ Every instance of a service must generate audit logs containing information abou
 
 ## **5.18 Cloud native is a MUST**
 
-All stand-alone applications used and services created based upon them must be cloud-native in a sense of [cloud-native computing](https://en.wikipedia.org/wiki/Cloud-native\_computing).
+All stand-alone applications used and services created based upon them must be cloud-native in the sense of [cloud-native computing](https://en.wikipedia.org/wiki/Cloud-native\_computing).
 
 ## **5.19** Source code MUST be published under a permissive license and be easily accessible by a public repository
 
-Full source code of the Building Block must be published as easily accessible open-source code.
+The full source code of the Building Block must be published as easily accessible open-source code.
 
 All custom developments are published under the MIT License by default if not clearly stated otherwise.
 
