@@ -84,27 +84,7 @@ The security layer ensures that the content of messages and interactions with ot
 5. Messaging Building Block allows for asynchronous communication, using either point-to-point communication or a Pub/Sub model (using Information Mediator Building Block) where the user is subscribed to a message room/group and will be receiving all messages intended for the “mother of newborn child” group.
 6. Security: Before allowing any messages to be published, the Messaging Building Block fetches a corresponding ID and a role or a session token available for the user for authentication and access purposes. Incorporates privacy into its design when the purpose of the authentication is not revealed if a service provider sends an authentication request.
 
-## **Example Security Requirement**
 
-List any cross-cutting security requirements that apply to the context from [Detailed Functional Requirements](https://www.govstack.global/wp-content/uploads/2021/08/Security\_Building\_Block\_Definition\_1.0.1.pdf).
-
-The messaging system must comply with the security requirements on the security [building block](https://docs.google.com/document/d/1ZuR52EJm-iWWXCNpkAEZXFPRF1Cg1ciJ/edit) on:
-
-* **4 Key Security Functional Requirements**
-* **5.1 Privacy**
-* **5.2 Audit Logging**
-* **5.3 Source Code**
-* **6.1 API Management and Gateway Functional Requirements**
-* **6.2 Identity and Access Management (IAM) Suite Functional Requirements**
-* **6.3 Digital ID/Certificate Functional Requirements**
-* **6.4 Certificate Authority Functional Requirements**
-* **6.8 Virus, Ransomware, Malware, Spam, Phishing Protection Requirements**
-* **6.9 Denial of Service Attack Prevention Requirements**
-* **6.10 Applications Development Vulnerability Prevention Requirements**
-* **6.11 Infrastructure Vulnerability Remediation Requirements**
-* **6.13 Data Encryption at Rest and In Transit Requirements**
-* **6.14 Social Network, Media, and Engineering Threat Management Requirements**
-* **6.21 Fraud Prevention, Detection, and Management Requirements**
 
 ## **Messaging Building Block technical requirements**
 

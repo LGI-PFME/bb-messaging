@@ -137,3 +137,21 @@ All custom developments are published under the MIT License by default if not cl
 ## Security requirements&#x20;
 
 In case of not applying any or some of [GovStack's global cross-cutting security requirements](https://govstack.gitbook.io/specification/v/govstack-specification-main/security-requirements), listing all such cases is a must.
+
+The messaging system must comply with the security requirements on the security [building block](https://docs.google.com/document/d/1ZuR52EJm-iWWXCNpkAEZXFPRF1Cg1ciJ/edit) on:
+
+* **4 Key Security Functional Requirements**
+* **5.1 Privacy**
+* **5.2 Audit Logging**
+* **5.3 Source Code**
+* **6.1 API Management and Gateway Functional Requirements**
+* **6.2 Identity and Access Management (IAM) Suite Functional Requirements**
+* **6.3 Digital ID/Certificate Functional Requirements**
+* **6.4 Certificate Authority Functional Requirements**
+* **6.8 Virus, Ransomware, Malware, Spam, Phishing Protection Requirements**
+* **6.9 Denial of Service Attack Prevention Requirements**
+* **6.10 Applications Development Vulnerability Prevention Requirements**
+* **6.11 Infrastructure Vulnerability Remediation Requirements**
+* **6.13 Data Encryption at Rest and In Transit Requirements**
+* **6.14 Social Network, Media, and Engineering Threat Management Requirements**
+* **6.21 Fraud Prevention, Detection, and Management Requirements**
