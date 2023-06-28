@@ -8,145 +8,77 @@ description: >-
 
 This section provides a reference for APIs that should be implemented by this Building Block. The APIs defined here establish a blueprint for how the Building Block will interact with other Building Blocks. Additional APIs may be implemented by the Building Block, but the listed APIs define a minimal set of functionality that should be provided by any implementation of this Building Block.
 
-Messaging Building Blocks's APIs can be found from [https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/api](https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/api).
+The [GovStack non-functional requirements document](https://govstack.gitbook.io/specification/v/1.0/architecture-and-nonfunctional-requirements/6-onboarding) provides additional information on how 'adaptors' may be used to translate an existing API to the patterns described here. This section also provides guidance on how candidate products are tested and how GovStack validates a product's API against the API specifications defined here.&#x20;
 
-The [GovStack non-functional requirements document](https://govstack.gitbook.io/specification/architecture-and-nonfunctional-requirements/6-onboarding) provides additional information on how 'adaptors' may be used to translate an existing API to the patterns described.
+The tests for the Messaging Building Block can be found in [this GitHub repository.](https://github.com/GovStackWorkingGroup/bb-messaging/tree/main/test/openAPI)
 
-## 8.1 Sending emails
+## 8.1 Government to person (G2P)
 
-### 8.1.1 Sending single emails one by one
+### 8.1.1 Sending emails
+
+### 8.1.1.1 Sending single emails one by one
 
 This API is designed to send out emails one by one.
 
 Although an email can be sent to multiple recipients by using `email`, `emailCC` and `emailBCC` appropriately, this is still considered as sending a single email.
 
-#### 8.1.1.1 Sample user story
+#### Sample user story
 
-```
-AS A Doctor working in a hospital
-I WANT TO notify my patient about a confirmed registration
-SO THAT the patient would know when to come for a visit
-```
+As a Doctor working in a hospital, I want to notify my patient about a confirmed registration so that the patient would know when to come for a visit.
 
-#### 8.1.1.2 API endpoint
+#### API endpoint
 
-`POST` `/send/email/single`
+{% swagger src="https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml" path="/send/email/single" method="post" %}
+[https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml](https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml)
+{% endswagger %}
 
-```json
-{
-  "callback": {
-    "URI": "https://example.com/callback/emails/requestUID"
-  },
-  "senderInfo": {
-    "organisationName": "Example Medical Insitution",
-    "organisationRegNr": "GOV1234567890",
-    "onBehalfOfName": "Example Medical Insitution",
-    "onBehalfOfRegNr": "GOV1234567890",
-    "email": "sender@example.com",
-    "replyTo": "reply-to@example.com",
-    "name": "Example Doctor"
-  },
-  "recipientInfo": {
-    "email": "customer@example.com",
-    "emailCC": "customer-cc@example.com",
-    "emailBCC": "customer-bcc@example.com",
-    "name": "Example Customer"
-  },
-  "emailContent": {
-    "encoding": "UTF-8",
-    "title": "Example Title Of An Email",
-    "content": "Example Customer"
-  }
-}
-```
-
-### 8.1.2 Sending multiple (batch) emails at once
+### 8.1.1.2 Sending multiple (batch) emails at once
 
 This API is designed to send out identical emails to multiple (batch) recipients at once.
 
-#### 8.1.2.1 Sample user story
+#### Sample user story
 
-```
-AS A Hospital
-I WANT TO notify a specified group of my clients about the possibility to register to vacant time slots within a limited period of time
-SO THAT the clients potentially needing it the most would have a guaranteed chance to get an appointment
-```
+As a Hospital I want to notify a specified group of my clients about the possibility to register to vacant time slots within a limited period of time so that the clients potentially needing it the most would have a guaranteed chance to get an appointment
 
-#### 8.1.2.2 API endpoint
+#### API endpoint
 
-Information about recipients is provided as `JSON` in `base64` format.
+{% swagger src="https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml" path="/send/email/batch" method="post" %}
+[https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml](https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml)
+{% endswagger %}
 
-`POST` `/send/email/batch`
+## 8.2 Person to Government (P2G) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
-```json
-{
-  "callbackURI": {
-    "URI": "https://example.com/callback/emails/requestUID"
-  },
-  "senderInfo": {
-    "organisationName": "Example Medical Insitution",
-    "organisationRegNr": "GOV1234567890",
-    "onBehalfOfName": "Example Medical Insitution",
-    "onBehalfOfRegNr": "GOV1234567890",
-    "email": "sender@example.com",
-    "replyTo": "reply-to@example.com",
-    "name": "Example Doctor"
-  },
-  "recipientInfo": {
-    "batchEmailAsBase64": "W3sKCSJyZWNpcGllbnRJbmZvIjogewoJCSJlbWFpbCI6ICJjdXN0b21lckBleGFtcGxlLmNvbSIsCgkJImVtYWlsQ0MiOiAiY3VzdG9tZXItY2NAZXhhbXBsZS5jb20iLAoJCSJlbWFpbEJDQyI6ICJjdXN0b21lci1iY2NAZXhhbXBsZS5jb20iLAoJCSJuYW1lIjogIkV4YW1wbGUgQ3VzdG9tZXIiCgl9Cn0sIHsKCSJyZWNpcGllbnRJbmZvIjogewoJCSJlbWFpbCI6ICJkZWFyLWN1c3RvbWVyQGV4YW1wbGUuY29tIiwKCQkibmFtZSI6ICJVbmtub3duIEN1c3RvbWVyIgoJfQp9XQ=="
-  },
-  "emailContent": {
-    "encoding": "UTF-8",
-    "title": "Example Title Of An Email",
-    "content": "Example Customer"
-  }
-}
-```
+### 8.2.1 Responding to emails
 
-### 8.1.3 Responding to emails
+This API is designed to accept responses to emails that have been previously sent out by using the Messaging Building Block. The protocol itself is lightweight and expects custom services from anyone using it. The Messaging Building Block is responsible for delivering the message and does not know (or want to know) anything about the content of it, how it will be used, etc.
 
-This API is designed to accept responses to emails that have been previously sent out by using the Messaging BB.
+#### Sample user story
 
-The protocol itself is lightweight and expects custom services by anyone using it. The Messaging BB is responsible for delivering the message and does not know (or want to know) anything about the content of it, how it will be used, etc.
+As a Hospital, I want to get and send responses from and to clients so that I could continue and keep track of email conversations taking place via GovStack
 
-#### 8.1.3.1 Sample user story
+#### API endpoint
 
-```
-AS A Hospital
-I WANT TO get and send responses from and to clients
-SO THAT I could continue and keep track of email conversations taken place via GovStack
-```
+{% swagger src="https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml" path="/callback/email" method="post" %}
+[https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml](https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml)
+{% endswagger %}
 
-#### 8.1.3.2 API endpoint
+### 8.2.2 Reading the status of emails
 
-`POST` `/callback/email`
+This API is designed to provide information about the status of emails sent to the Messaging Building Block.
 
-```json
-{
-  "meta": "Meta-info",
-  "content": "Q2xpZW50LXNwZWNpZmljIGNvbnRlbnQsIG1vc3QgbGlrZWx5IEpTT04="
-}
-```
+#### Sample user story
 
-### 8.1.4 Reading the status of emails
+As a Doctor working in a hospital I want to know which emails I have sent haven't reached their destination so that I could contact such patients by using different means
 
-This API is designed to provide information about the status of emails sent to the Messaging BB.
+#### API endpoint
 
-#### 8.1.4.1 Sample user story
+{% swagger src="https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml" path="/status/email" method="get" %}
+[https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml](https://raw.githubusercontent.com/GovStackWorkingGroup/bb-messaging/main/api/swagger.yaml)
+{% endswagger %}
 
-```
-AS A Doctor working in a hospital
-I WANT TO know which emails I've sent haven't reached their destination
-SO THAT I could contact such patients by using different means
-```
+#### Status of emails
 
-#### 8.1.4.2 API endpoint
-
-`GET` `/status/email?status=<status_1>&status=<status_2>`
-
-#### 8.1.4.3 States of emails
-
-Possible states of emails that can be queried are as following:
+Possible status of emails that can be queried are as follows:
 
 1. `scheduled`
 2. `processing`
