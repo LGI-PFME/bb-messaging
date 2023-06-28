@@ -1,0 +1,29 @@
+{
+  "api_key": "Q2xpZW50LXNwZWNpZ",
+  "data": {
+    "email": [
+      {
+        "RequestID": "fUQK-CPju-Ea5B-6y7X-8A72-VqU5",
+        "status": {
+          "scheduled": 0,
+          "processing": 1004,
+          "deferred": 0,
+          "bounced": 257,
+          "not_sent": 0,
+          "delivered": 9032
+        }
+      },
+      {
+        "RequestID": "fUQK-CPju-Ea5B-6y7X-8A72-Tr3X",
+        "status": {
+          "scheduled": 1,
+          "processing": 666,
+          "deferred": 0,
+          "bounced": 123,
+          "not_sent": 2,
+          "delivered": 1024
+        }
+      }
+    ]
+  }
+}

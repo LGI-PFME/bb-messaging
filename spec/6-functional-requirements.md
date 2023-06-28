@@ -27,7 +27,7 @@ Messaging requests go through a final check to be clean of defects and inconsist
 * In relation to batch logic, messages are scheduled against the availability of systems, throughput limitations, and rules set by programs.
 * Regular and repeat messages are scheduled.
 * Batches may be given prioritization in the queue according to the message settings.
-* Essential control logic may be included here specific to the individual batch sending and resending.
+* The essential control logic may be included here specific to the individual batch sending and resending.
 * Additional workflow checks as required, including resending failed transactions.
 
 ## 6.2 Person to Government (P2G) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
@@ -48,7 +48,7 @@ This request could come from two sources: external or internal. An external sour
 
 ### **6.2.2 Batch logic**
 
-* Find unprocessed requests from Time Series Database.
+* Find unprocessed requests from a database.
 * Prepare each request for actual processing, requests may come as single or batch messages and every message needs to be treated as a separate entry.
 * It prepares unprocessed requests for actual processing.
 
@@ -87,3 +87,4 @@ This section lists the technical capabilities of the Messaging Building Block. T
 4. Having published its messaging policies and services at the Information Mediator Building Block, the other Building Blocks and applications can discover and use the services of the Messaging Building Block.
 5. Messaging Building Block allows for asynchronous communication, using either point-to-point communication or a Pub/Sub model (using Information Mediator Building Block) where the user is subscribed to a message room/group and will be receiving all messages intended for the “mother of newborn child” group.
 6. Security: Before allowing any messages to be published, the Messaging Building Block fetches a corresponding ID and a role or a session token available for the user for authentication and access purposes. Incorporates privacy into its design when the purpose of the authentication is not revealed if a service provider sends an authentication request.
+

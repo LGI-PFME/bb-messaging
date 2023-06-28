@@ -47,9 +47,19 @@ Technical components (with the exception of relational databases) must be statel
 ## **5.8 Implement horizontally scalable Databases (RECOMMENDED)**
 
 At least on the level of active-passive nodes based on the principle of "eventually consistent".
+**Pending:** initial state for all messages waiting to be queued.
+
+**Queued:** messages that are in the queue to be sent.
+
+**Sent:** messages with proper confirmation that was sent to the provider.
+
+**Delivered:** messages with proper confirmation that was delivered to the end-user.
+
+**Errored:** messages with an error during delivery.
+
+**Failed:** messages that are errored and we gave up sending.
 
 ## **5.9 Messaging as a service must be vendor-neutral (REQUIRED)**
-
 If Messaging Building Block protocols are followed, the technical stack used to provide messaging as a service is vendor-neutral, meaning that anyone is free to use technical solutions of their own choice.
 
 ## **5.10** Only allowed participants can join the network (REQUIRED)
@@ -83,7 +93,6 @@ Perform input validation checks to prevent oversized message attacks, SQL inject
 ## **5.17 A**ccess quotas **(**OPTIONAL**)**
 
 Manage access quotas and throttling.
-
 ## **5.18 API calls** **(REQUIRED)**
 
 Logging of all API calls made.
