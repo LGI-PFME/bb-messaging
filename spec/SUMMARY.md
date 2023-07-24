@@ -10,4 +10,5 @@
 * [7 Data Structures](7-data-structures.md)
 * [8 Service APIs](8-service-apis.md)
 * [9 Internal Workflows](9-workflows.md)
-* [10 Other Resources](10-other-resources.md)
+* [10 Sample implementation](10-sample-implementation.md)
+* [11 Other resources](11-other-resources.md)

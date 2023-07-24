@@ -1,21 +1,12 @@
 ---
 description: >-
-  This section links to any external documents that may be relevant, such as
-  standards documents or other descriptions of this Building Block that may be
-  useful.
+  This section shows possible sample implementations, such as Issuing Birth
+  Certificate; Appointment Booking With a Health Care Worker
 ---
 
-# 10 Other Resources
+# 10 Sample implementation
 
-## 10.1 Key Decision Log
-
-[A historical log of key decisions regarding this Building Block](https://govstack-global.atlassian.net/l/cp/1ePehGu6).
-
-## 10.2 Future Considerations
-
-[A list of topics that may be relevant to future versions of this Building Block](https://govstack-global.atlassian.net/l/cp/UtVjJRD7).
-
-## ANNEX I - Use Case Tables and Component diagrams
+Use Case Tables and Component diagrams
 
 <figure><img src=".gitbook/assets/image3 (2).png" alt=""><figcaption></figcaption></figure>
 

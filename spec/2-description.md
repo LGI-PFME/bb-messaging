@@ -28,4 +28,4 @@ Messaging Building Block is enabling signing up for and receiving services, such
 * communicating disaster messages or reminders about the voters' rights during elections;
 * etc.
 
-The use cases are detailed in the section of the following document: [ANNEX I - Use Case Tables](10-other-resources.md#annex-i-use-case-tables-and-component-diagrams).
+The use cases are detailed in the section of the following document: [ANNEX I - Use Case Tables](10-sample-implementation.md#annex-i-use-case-tables-and-component-diagrams).
