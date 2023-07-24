@@ -6,7 +6,7 @@ description: >-
 
 # 10 Sample implementation
 
-Use Case Tables and Component diagrams
+## Use Case Tables and Component diagrams
 
 <figure><img src=".gitbook/assets/image3 (2).png" alt=""><figcaption></figcaption></figure>
 
