@@ -10,18 +10,29 @@ The Messaging Building Block is a standalone messaging gateway/client/proxy (inc
 
 ## 4.1 Government to person (G2P) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
+> In scope of v1
+
 * informing End clients about their registration;
 * reminding and requesting End clients' confirmation for appointment booking or other events;
+* getting confirmation about government services and interactions.
+
+> In scope of future releases
+
 * delivering information at scale to End clients;
 * alerting End clients in emergency contexts.
 
 ## 4.2 Person to Government (P2G) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
-* providing data to the government/service;
-* getting confirmation about government services and interactions quickly;
+> In scope of v1
+
+* confirm Client registration for a service;
+* providing data to the government/service.
+
+> In scope of future releases
+
 * asking for information about government services.
 
-Communication between different government services (government to government) is out of the scope of this Building Block but can be enabled through the Information Mediator Building Block.
+_Communication between different government services (government to government) is out of the scope of this Building Block but can be enabled through the Information Mediator Building Block._
 
 ## 4.3 Out-of-Scope Assumptions
 
