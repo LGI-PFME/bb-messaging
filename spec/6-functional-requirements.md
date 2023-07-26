@@ -17,7 +17,7 @@ The queuing process varies according to the policy and message type attached to 
 
 Messaging requests go through a final check to be clean of defects and inconsistencies, to check with external systems as necessary:
 
-* check for message duplicates by making an actual request to a Time Series Database to see if entries with MHASH and UMID exist;
+* check for message duplicates by making an actual request to a database to see if entries with MHASH and UMID exist;
 * low-level validation of data types and data completeness;
 * check for inconsistencies;
 * standard error messages and codes are used as a response to inconsistent requests.
@@ -87,4 +87,3 @@ This section lists the technical capabilities of the Messaging Building Block. T
 4. Having published its messaging policies and services at the Information Mediator Building Block, the other Building Blocks and applications can discover and use the services of the Messaging Building Block.
 5. Messaging Building Block allows for asynchronous communication, using either point-to-point communication or a Pub/Sub model (using Information Mediator Building Block) where the user is subscribed to a message room/group and will be receiving all messages intended for the “mother of newborn child” group.
 6. Security: Before allowing any messages to be published, the Messaging Building Block fetches a corresponding ID and a role or a session token available for the user for authentication and access purposes. Incorporates privacy into its design when the purpose of the authentication is not revealed if a service provider sends an authentication request.
-
