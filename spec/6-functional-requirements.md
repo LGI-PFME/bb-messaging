@@ -75,7 +75,29 @@ The security layer ensures that the content of messages and interactions with ot
 * The communication must be TLS-secured using client authentication, Transport Layer Security protocol (TLS) 1.2 and above should be used to protect the confidentiality and integrity of the data in transit.
 * Personal profiles must never be disclosed to any unauthorized party.
 
-## Building Block Components
+## 6.3 Cross-Cutting Requirements specific to the Messaging Building Block
+
+## **6.3.1 Enable message replication (RECOMMENDED)**
+
+In order to prevent single points of failure, messages must be replicated on at least 2 different service providers. In case of message replication, all unprocessed replicated messages must be kept track of and relevantly updated in order to prevent re-processing them.
+
+## **6.3.2 Support policy configuration (REQUIRED)**
+
+Admin of the room must be able to choose the policy profile with the configuration of the message provider, e.g. retrial frequency.
+
+## **6.3.3** Support queuing mechanism (REQUIRED)
+
+Unsent and unsuccessfully delivered messages must remain in a queue until being successfully delivered or otherwise permanently processed.
+
+### **6.3.3.1 Messages Delivery Statuses**
+
+Pending (initial state for all messages waiting to be queued); Queued (messages that are in the queue to be sent); Sent (messages with proper confirmation that was sent to the provider); Delivered (messages with proper confirmation that was delivered to the end-user); Errored (messages with error during delivery); Failed (messages that are errored and we gave up sending).
+
+### **6.3.3.2** Delivery business rules
+
+Messages not delivered in a period of 24 hours (any errored or queued messages more than 24 hours old must be labelled as failed and go out of the queue); Messages retrial (Errored messages must be retried for 24 hours).
+
+## 6.4 Building Block Components
 
 This section lists the technical capabilities of the Messaging Building Block. The following components are needed to achieve the technical functionalities of the messaging Building Block.
 
