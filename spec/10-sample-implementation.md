@@ -8,6 +8,8 @@ description: >-
 
 ## Use Case Tables and Component diagrams
 
+This is a high-level overview of how the Messaging BB acts internally, but also to cover the expectation for a third party to deliver requests (to and from).
+
 <figure><img src=".gitbook/assets/image3 (2).png" alt=""><figcaption></figcaption></figure>
 
 #### **Use case table - Birth Certificate to Children**
