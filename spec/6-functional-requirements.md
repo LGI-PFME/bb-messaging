@@ -4,6 +4,8 @@ description: This section lists the technical requirements of this Building Bloc
 
 # 6 Functional Requirements
 
+In addition to the functional requirements described in this section, GovStack's cross-cutting requirements defined in the [architecture specification document](https://govstack.gitbook.io/specification/v/1.0/architecture-and-nonfunctional-requirements) and [GovStack Security Requirements](https://govstack.gitbook.io/specification/v/1.0/security-requirements), apply.
+
 ## 6.1 Government to person (G2P) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
 ### **6.1.1 Queuing**
@@ -67,13 +69,6 @@ The components should also generate transaction logs for events that capture at 
 The event logs and the transaction logs should **NOT** capture any sensitive data such as contact data, or channel authorization credentials.
 
 Fetch and securely archive logs from working nodes is also expected.
-
-### **6.2.4 Security layer**
-
-The security layer ensures that the content of messages and interactions with other Building Blocks are encrypted in transit. The security layer follows these requirements:
-
-* The communication must be TLS-secured using client authentication, Transport Layer Security protocol (TLS) 1.2 and above should be used to protect the confidentiality and integrity of the data in transit.
-* Personal profiles must never be disclosed to any unauthorized party.
 
 ## 6.4 Building Block Components
 
