@@ -101,3 +101,31 @@ Databases with unstructured data should be treated with Elasticsearch/Logstash.
 ## **5.21** Message broker tool **(RECOMMENDED)**
 
 End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.
+
+## **5.22 Enable message replication (RECOMMENDED)**
+
+In order to prevent single points of failure, messages must be replicated on at least 2 different service providers. In case of message replication, all unprocessed replicated messages must be kept track of and relevantly updated in order to prevent re-processing them.
+
+## **5.23 Support policy configuration (REQUIRED)**
+
+Admin of the room must be able to choose the policy profile with the configuration of the message provider, e.g. retrial frequency.
+
+## **5.24** Support queuing mechanism (REQUIRED)
+
+Unsent and unsuccessfully delivered messages must remain in a queue until being successfully delivered or otherwise permanently processed.
+
+### **5.24.1 Messages Delivery Statuses**
+
+Pending (initial state for all messages waiting to be queued); Queued (messages that are in the queue to be sent); Sent (messages with proper confirmation that was sent to the provider); Delivered (messages with proper confirmation that was delivered to the end-user); Errored (messages with an error during delivery); Failed (messages that are errored and we gave up sending).
+
+### **5.24.2** Delivery business rules
+
+Messages not delivered in a period of 24 hours (any errored or queued messages more than 24 hours old must be labeled as failed and go out of the queue); Messages retrial (Errored messages must be retried for 24 hours).
+
+## **5.25** Client application authorization tokens **(REQUIRED)**
+
+Client applications must send authorization tokens in the authorization header of the request to authenticate users and the API Management Gateway will verify whether the token is valid.
+
+## **5.26** Input validation checks **(REQUIRED)**
+
+Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.
