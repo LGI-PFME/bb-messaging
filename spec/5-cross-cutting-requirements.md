@@ -46,8 +46,7 @@ Technical components (with the exception of relational databases) must be statel
 
 ## **5.8 Implement horizontally scalable Databases (RECOMMENDED)**
 
-At least on the level of active-passive nodes based on the principle of "eventually consistent".
-**Pending:** initial state for all messages waiting to be queued.
+At least on the level of active-passive nodes based on the principle of "eventually consistent". **Pending:** initial state for all messages waiting to be queued.
 
 **Queued:** messages that are in the queue to be sent.
 
@@ -60,6 +59,7 @@ At least on the level of active-passive nodes based on the principle of "eventua
 **Failed:** messages that are errored and we gave up sending.
 
 ## **5.9 Messaging as a service must be vendor-neutral (REQUIRED)**
+
 If Messaging Building Block protocols are followed, the technical stack used to provide messaging as a service is vendor-neutral, meaning that anyone is free to use technical solutions of their own choice.
 
 ## **5.10** Only allowed participants can join the network (REQUIRED)
@@ -90,14 +90,15 @@ Client applications must send authorization tokens in the authorization header o
 
 Perform input validation checks to prevent oversized message attacks, SQL injection attacks as well as JSON and XML threats.
 
-## **5.17 A**ccess quotas **(**OPTIONAL**)**
+## **5.17 A**ccess quotas **(RECOMMENDED)**
 
 Manage access quotas and throttling.
+
 ## **5.18 API calls** **(REQUIRED)**
 
 Logging of all API calls made.
 
-## **5.19 API consumption (**RECOMMENDED**)**
+## **5.19 API consumption (RECOMMENDED)**
 
 Allow API providers to limit the rate of consumption for all API users.
 
@@ -117,15 +118,14 @@ Asynchronous messaging processing. OpenAPI specifications for calling this funct
 
 Stateless architecture.
 
-## **5.24** Message broker tool **(**RECOMMENDED**)**
+## **5.24** Message broker tool **(RECOMMENDED)**
 
 Message broker tool to enable performant queueing mechanisms such as RabbitMQApache/Kafka, or GRPC for data transfer speed purposes.
 
-## **5.25 U**nstructured DATABASES **(**REQUIRED**)**
+## **5.25 U**nstructured DATABASES **(REQUIRED)**
 
 Databases with unstructured data should be treated with Elasticsearch/Logstash.
 
-## **5.26** Message broker tool **(**RECOMMENDED**)**
+## **5.26** Message broker tool **(RECOMMENDED)**
 
 End users should be registered as Message queue clients/subscribers in the Messaging Building Block. Subscription is required to receive a message.
-
