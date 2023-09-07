@@ -27,17 +27,6 @@ The resource model shows the relationship between data objects that are used by 
 | Mobile Number        | String   | Phone number (mobile) of user | [E.164 Mobile number standard](https://www.itu.int/rec/T-REC-E.164/). Should include country code. |
 | Government ID number | Integer  | Government issued ID number   | Used when linking to global ID Building Block.                                                     |
 
-### Standards
-
-The following standards are applicable to data structures in the Messaging Building Block:
-
-* all services are provided as REST API requests;
-* only Transport Layer Security (TLS) Server Name Indication (SNI) extension-compatible requests are allowed;
-* REST calls and responses use JSON as the only allowed data format.
-
-1. Using [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) on dates and times is a MUST;
-2. [UTF-8 character encoding](https://en.wikipedia.org/wiki/UTF-8) on text input is a MUST.
-
 ### **Model Schemas**
 
 Each model schema MUST have a corresponding JSON Schema ([API definition file](https://raw.githubusercontent.com/GovStackWorkingGroup/BuildingBlockAPI/main/ExampleSchema.json)).
