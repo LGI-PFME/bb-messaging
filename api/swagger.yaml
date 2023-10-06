@@ -10,7 +10,6 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-host: example.com
 basePath: /v1
 tags:
 - name: messaging
