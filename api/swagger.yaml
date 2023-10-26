@@ -10,7 +10,6 @@ info:
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-host: example.com
 basePath: /v1
 tags:
 - name: messaging
@@ -29,7 +28,7 @@ paths:
       summary: Send a single email
       operationId: sendSingleEmail
       parameters:
-      - name: api_key
+      - name: apiKey
         in: header
         required: true
         schema:
@@ -39,7 +38,7 @@ paths:
         description: Email containing information about the recipient
         required: true
         schema:
-          $ref: "#/definitions/Email"
+          $ref: "#/definitions/email"
       responses:
         200:
           description: Request successfully accepted
@@ -50,7 +49,7 @@ paths:
         405:
           description: Invalid input
       security:
-      - api_key: []
+      - apiKey: []
   /send/email/batch:
     post:
       tags:
@@ -64,7 +63,7 @@ paths:
             schema:
               type: string
       parameters:
-      - name: api_key
+      - name: apiKey
         in: header
         required: true
         schema:
@@ -85,7 +84,7 @@ paths:
         405:
           description: Invalid input
       security:
-      - api_key: []
+      - apiKey: []
   /callback/email:
     post:
       tags:
@@ -94,12 +93,12 @@ paths:
       description: This service may reside on both Messaging BB's and client's side. If used, a matching OpenAPI spec must be provided by the service provider, describing the expected input when making request to the endpoint.
       operationId: callbackEmail
       parameters:
-      - name: api_key
+      - name: apiKey
         in: header
         required: true
         schema:
           type: string
-      - name: requestUID
+      - name: requestUid
         in: header
         required: true
         schema:
@@ -116,21 +115,21 @@ paths:
         405:
           description: Invalid input
       security:
-      - api_key: []
+      - apiKey: []
   /status/email:
     get:
       tags:
       - status
       summary: Get an overview of sent emails statuses
-      description: Get status of sent emails. Use both \"api_key\" and \"requestUID\" in your request.
+      description: Get status of sent emails. Use both \"apiKey\" and \"requestUid\" in your request.
       operationId: getEmailStatus
       parameters:
-      - name: api_key
+      - name: apiKey
         in: header
         required: true
         schema:
           type: string
-      - name: requestUID
+      - name: requestUid
         in: header
         required: true
         schema:
@@ -148,7 +147,7 @@ paths:
             - processing
             - deferred
             - bounced
-            - not sent
+            - notSent
             - delivered
       responses:
         200:
@@ -160,14 +159,14 @@ paths:
         405:
           description: Invalid input
       security:
-      - api_key: []
+      - apiKey: []
 securityDefinitions:
-  api_key:
+  apiKey:
     type: apiKey
-    name: api_key
+    name: apiKey
     in: header
 definitions:
-  Email:
+  email:
     type: object
     properties:
       callback:
@@ -194,7 +193,7 @@ definitions:
     properties:
       URI:
         type: string
-        example: https://example.com/callback/emails/requestUID
+        example: https://example.com/callback/emails/requestUid
   senderInfo:
     type: object
     properties:
@@ -268,10 +267,10 @@ definitions:
     properties:
       response:
         type: string
-        example: Request successfully accepted. Use \"requestUID\" to track it's status.
-      requestUID:
+        example: Request successfully accepted. Use \"requestUid\" to track it's status.
+      requestUid:
         type: string
-        example: fUQK-CPju-Ea5B-6y7X-8A72-VqU5
+        example: UfQK-CPju-Ea5B-6y7X-8A72-VqU5
   requestStatus:
     type: object
     properties:
@@ -291,7 +290,7 @@ definitions:
         type: integer
         format: int32
         example: 257
-      not_sent:
+      notSent:
         type: integer
         format: int32
         example: 0
@@ -302,7 +301,3 @@ definitions:
 externalDocs:
   description: Find out more about GovStack
   url: https://www.govstack.global/
-servers:
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/GovStack/govstack-messaging-bb/0.1.1
