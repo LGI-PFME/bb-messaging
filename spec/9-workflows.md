@@ -70,4 +70,104 @@ Information Mediator-->>Workflow BB: Proxy event to be handled<br />by Workflow 
 
 ### **9.2.2** Person to Government/Building Block communication
 
-<table data-header-hidden><thead><tr><th width="164.33333333333331">Name</th><th>Required Data</th><th>Notes</th></tr></thead><tbody><tr><td>Message sent through the communication channel / service provider</td><td>Text message and User ID</td><td>Reject messages that do not comply with expected schema</td></tr><tr><td>Retrieve Person and Contact Channel Data from the incoming Message </td><td>Map retreived data with appropriate recipient</td><td>Technical mapping is an internal service of the Messaging BB </td></tr><tr><td>Confirm message received</td><td>Message Delivery Data Structure following Communication Channel standards with Status</td><td>The Message unique ID is collected to keep up other statuses updated</td></tr><tr><td>Publish Status for the original sender</td><td>User and Message IDs with Delivery Status containing date and time</td><td>The Message's unique ID is preserved to keep up its status updated</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="164.33333333333331">Name</th><th width="129">Required Data</th><th>Notes</th></tr></thead><tbody><tr><td>Message sent through the communication channel / service provider</td><td>Text message and User ID</td><td>Reject messages that do not comply with expected schema</td></tr><tr><td>Retrieve Person and Contact Channel Data from the incoming Message </td><td>Map retreived data with appropriate recipient</td><td>Technical mapping is an internal service of the Messaging BB </td></tr><tr><td>Confirm message received</td><td>Message Delivery Data Structure following Communication Channel standards with Status</td><td>The Message unique ID is collected to keep up other statuses updated</td></tr><tr><td>Publish Status for the original sender</td><td>User and Message IDs with Delivery Status containing date and time</td><td>The Message's unique ID is preserved to keep up its status updated</td></tr></tbody></table>
+
+## 9.3   Internal processing of external requests <a href="#_z337ya" id="_z337ya"></a>
+
+### 9.3.1 Sending messages <a href="#_3j2qqm3" id="_3j2qqm3"></a>
+
+The following diagram illustrates the internal processes of the Messaging BB to send messages received as external requests and sent via external service providers.
+
+```mermaid
+sequenceDiagram
+    participant IP as Input Processor
+    participant L as Logging
+    participant MP as Message Processor
+    participant DB as Database
+    participant MSN as Messenger
+    participant ESP as Service Provider
+
+    note over IP: External request received
+    IP ->> DB: API key validation
+    DB -->> IP: OK
+    
+    note over IP, L: Only requests of clients are logged
+    IP ->> L: Request logged AS IS
+    
+    IP ->> IP: Protocol validation
+    
+    note over IP, MP: Only valid requests are sent for further processing
+    IP ->> MP: 
+
+    note over MP: Validate sender mostly to avoid sending<br>messages on behalf of someone else
+    MP ->> DB: Validate if the sender<br>information matches with the<br>data related to the API key
+    DB -->> MP: OK
+
+    note over MP, DB: Valid messages will be stored<br>in a database for further processing
+    note over IP, MP: Messaging channel is defined by the API endpoint used
+    IP ->> MP: Email, SMS, or other
+    note over MP: Single messages can be saved as is
+    MP ->> MP: Process batch messages<br>to be saved one-by-one
+    MP ->> DB: Insert messages to be sent
+
+    note over MP: Prepare sending messages
+    MP ->> MP: Apply scheduler if needed
+
+    MP ->> DB: Get unprocessed messages
+    DB -->> MP: List of unprocessed messages
+
+    MP ->> DB: Get delivery channel and partner
+    DB -->> MP: Endpoint with credentials
+
+    note over MP, MSN: Initiate sending messages
+    MP ->> MSN: Pass messages one-by-one
+    MP ->> MSN: Pass delivery channel and partner
+
+    note over MSN, ESP: Send messages via<br>external Service Providers
+    MSN ->> ESP: Send message
+    ESP -->> MSN: Response code
+
+    note over MSN, DB: Save response code<br>for every messaging event
+    MSN ->> DB: Response code
+
+    MSN -->> IP: Process completed
+
+    IP ->> L: Log the whole event
+
+    note over IP, MSN: PROCESS COMPLETED
+```
+
+### 9.3.2 Providing status report for messages <a href="#_3j2qqm3" id="_3j2qqm3"></a>
+
+The following diagram illustrates the internal processes of the Messaging BB when providing status report for messages that have been passed on by external partners for further processing by the Messaging BB.
+
+```mermaid
+sequenceDiagram
+    participant IP as Input Processor
+    participant L as Logging
+    participant RP as Request Processor
+    participant DB as Database
+
+    note over IP: External request received
+    IP ->> DB: API key validation
+    DB -->> IP: OK
+    
+    note over IP, L: Only requests of clients are logged
+    IP ->> L: Request logged AS IS
+    
+    IP ->> IP: Protocol validation
+    
+    note over IP, RP: Only valid requests are sent for further processing
+    IP ->> RP: 
+
+    RP ->> DB: Get messages by "requestUid"<br>grouped by status
+    DB -->> RP: List of messages grouped by status
+
+    RP -->> IP: List of messages grouped by status
+
+    IP -->> IP: Return the result<br>to external request
+
+    IP ->> L: Log the whole event
+
+    note over IP, DB: PROCESS COMPLETED
+```
