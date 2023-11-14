@@ -78,71 +78,78 @@ Information Mediator-->>Workflow BB: Proxy event to be handled<br />by Workflow 
 
 The following diagram illustrates the internal processes of the Messaging BB to send messages received as external requests and sent via external service providers.
 
+
+
 ```mermaid
 sequenceDiagram
-    participant IP as Input Processor
-    participant L as Logging
-    participant MP as Message Processor
-    participant DB as Database
-    participant MSN as Messenger
-    participant ESP as Service Provider
 
-    note over IP: External request received
-    IP ->> DB: API key validation
-    DB -->> IP: OK
+participant L as Logging
+participant MP as Message Processor
+participant DB as Database
+participant MSN as Messenger
+participant ESP as Service Provider
+
+note over IP: External request received
+IP ->> DB: API key validation
+DB -->> IP: OK
     
-    note over IP, L: Only requests of clients are logged
-    IP ->> L: Request logged AS IS
+note over IP, L: Only requests of clients are logged
+IP ->> L: Request logged AS IS
     
-    IP ->> IP: Protocol validation
-    
-    note over IP, MP: Only valid requests are sent for further processing
-    IP ->> MP: 
+IP ->> IP: Protocol validation
 
-    note over MP: Validate sender mostly to avoid sending<br>messages on behalf of someone else
-    MP ->> DB: Validate if the sender<br>information matches with the<br>data related to the API key
-    DB -->> MP: OK
+note over IP, MP: Only valid requests are sent for further processing
+IP ->> MP: 
 
-    note over MP, DB: Valid messages will be stored<br>in a database for further processing
-    note over IP, MP: Messaging channel is defined by the API endpoint used
-    IP ->> MP: Email, SMS, or other
-    note over MP: Single messages can be saved as is
-    MP ->> MP: Process batch messages<br>to be saved one-by-one
-    MP ->> DB: Insert messages to be sent
+note over MP: Validate sender mostly to avoid sending<br>messages on behalf of someone else
+MP ->> DB: Validate if the sender<br>information matches with the<br>data related to the API key
+DB -->> MP: OK
 
-    note over MP: Prepare sending messages
-    MP ->> MP: Apply scheduler if needed
+note over MP, DB: Valid messages will be stored<br>in a database for further processing
+note over IP, MP: Messaging channel is defined by the API endpoint used
+IP ->> MP: Email, SMS, or other
+note over MP: Single messages can be saved as is
+MP ->> MP: Process batch messages<br>to be saved one-by-one
+MP ->> DB: Insert messages to be sent
 
-    MP ->> DB: Get unprocessed messages
-    DB -->> MP: List of unprocessed messages
+note over MP: Prepare sending messages
+MP ->> MP: Apply scheduler if needed
 
-    MP ->> DB: Get delivery channel and partner
-    DB -->> MP: Endpoint with credentials
+MP ->> DB: Get unprocessed messages
+DB -->> MP: List of unprocessed messages
 
-    note over MP, MSN: Initiate sending messages
-    MP ->> MSN: Pass messages one-by-one
-    MP ->> MSN: Pass delivery channel and partner
+MP ->> DB: Get delivery channel and partner
+DB -->> MP: Endpoint with credentials
 
-    note over MSN, ESP: Send messages via<br>external Service Providers
-    MSN ->> ESP: Send message
-    ESP -->> MSN: Response code
+note over MP, MSN: Initiate sending messages
+MP ->> MSN: Pass messages one-by-one
+MP ->> MSN: Pass delivery channel and partner
 
-    note over MSN, DB: Save response code<br>for every messaging event
-    MSN ->> DB: Response code
+note over MSN, ESP: Send messages via<br>external Service Providers
+MSN ->> ESP: Send message
+ESP -->> MSN: Response code
 
-    MSN -->> IP: Process completed
+note over MSN, DB: Save response code<br>for every messaging event
+MSN ->> DB: Response code
 
-    IP ->> L: Log the whole event
+MSN -->> IP: Process completed
 
-    note over IP, MSN: PROCESS COMPLETED
+IP ->> L: Log the whole event
+
+note over IP, MSN: PROCESS COMPLETED
+
+
 ```
 
 ### 9.3.2 Providing status report for messages <a href="#_3j2qqm3" id="_3j2qqm3"></a>
 
 The following diagram illustrates the internal processes of the Messaging BB when providing status report for messages that have been passed on by external partners for further processing by the Messaging BB.
 
+
+
 ```mermaid
 sequenceDiagram
+
     participant IP as Input Processor
     participant L as Logging
     participant RP as Request Processor
