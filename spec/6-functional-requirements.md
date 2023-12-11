@@ -8,14 +8,14 @@ In addition to the functional requirements described in this section, GovStack's
 
 ## 6.1 Government to person (G2P) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
-### **6.1.1 Queuing**
+### **6.1.1 Must provide Queuing processes (REQUIRED)**
 
 The queuing process varies according to the policy and message type attached to the messaging, if an emergency messaging type applies to it, the messaging gets prioritized, otherwise, the FIFO algorithm (First In, First Out) applies to other message types. It saves all the requests for further processing, furthermore, works in the form of an "AS IS" process analysis without changing anything on the request. The message queueing mechanism will:
 
 * save a hash (MHASH) of the original request and a Unique Message ID (UMID);
 * respond with "Message received" to the sender with generated UMID.
 
-### **6.1.2 Validation and Verification**
+### **6.1.2 Must provide Message Validation and Verification (REQUIRED)**
 
 Messaging requests go through a final check to be clean of defects and inconsistencies, to check with external systems as necessary:
 
@@ -24,7 +24,7 @@ Messaging requests go through a final check to be clean of defects and inconsist
 * check for inconsistencies;
 * standard error messages and codes are used as a response to inconsistent requests.
 
-### **6.1.3 Workflow and Scheduling**
+### **6.1.3 Must provide Workflow and Scheduling services (REQUIRED)**
 
 * In relation to batch logic, messages are scheduled against the availability of systems, throughput limitations, and rules set by programs.
 * Regular and repeat messages are scheduled.
@@ -34,7 +34,7 @@ Messaging requests go through a final check to be clean of defects and inconsist
 
 ## 6.2 Person to Government (P2G) <a href="#docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004" id="docs-internal-guid-c38a9447-7fff-fcb5-e6eb-c6419072f004"></a>
 
-### 6.2.1 Messaging request initiation
+### 6.2.1 Allow Messaging request initiation (REQUIRED)
 
 Handles the initiation of input data processing from all the API messaging calls and makes the API access control verification from other Building Blocks to the Messaging Building Block and vice versa as well as within the Messaging Building Block, it will:
 
@@ -48,13 +48,13 @@ Handles the initiation of input data processing from all the API messaging calls
 
 This request could come from two sources: external or internal. An external source could be another GovStack Building Block (e.g. the Registration Building Block). Either source must be appropriately authenticated and authorized to initiate the request. The request must contain at a minimum: the contact address (email, phone number, etc.), the message type, the content of the message, and the initiating source’s unique transaction ID.
 
-### **6.2.2 Batch logic**
+### **6.2.2 Implement Batching logic (REQUIRED)**
 
 * Find unprocessed requests from a database.
 * Prepare each request for actual processing, requests may come as single or batch messages and every message needs to be treated as a separate entry.
 * It prepares unprocessed requests for actual processing.
 
-### **6.2.3 Audit trails**
+### **6.2.3 Provide Audit trails (REQUIRED)**
 
 Each component of the messaging building block should be capable of producing transaction logs. This is important to ensure that the system can be adequately monitored and troubleshooting can be performed efficiently and effectively.
 
