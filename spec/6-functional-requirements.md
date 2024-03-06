@@ -74,7 +74,7 @@ Fetch and securely archive logs from working nodes is also expected.
 
 This section lists the technical capabilities of the Messaging Building Block. The following components are needed to achieve the technical functionalities of the messaging Building Block.
 
-<figure><img src=".gitbook/assets/image3 (1) (1).png" alt=""><figcaption><p><a href="https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK">https://app.diagrams.net/?thissrc=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK</a></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image3 (1).png" alt=""><figcaption><p><a href="https://app.diagrams.net/?src=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK">https://app.diagrams.net/?thissrc=about#G1AD6Ez1Q68ED1xB1JCpTuVshKYWp8VGvK</a></p></figcaption></figure>
 
 1. The Messaging Building Block is part of the GovStack implementation and is prompted to open up a two-way communication channel to deliver and capture messages/data between the GovStack systems and the end users, physical and legal persons.
 2. As a rule, the Messaging Building Block does not own any information but is carrying the minimum amount of (meta) data needed to transfer/publish a message. Messaging Building Block allows other Building Blocks and applications to reach out to customers/citizens in order for them to be able to make a decision or access a service. This Building Block can also be used for broadcasting a disaster message.
